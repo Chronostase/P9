@@ -8,24 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCA824336F38003E1DEA /* AppDelegate.swift */; };
-		E965FCAB24336F38003E1DEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCAA24336F38003E1DEA /* SceneDelegate.swift */; };
-		E965FCAD24336F38003E1DEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCAC24336F38003E1DEA /* ViewController.swift */; };
+		E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCAC24336F38003E1DEA /* WeatherViewController.swift */; };
 		E965FCB024336F38003E1DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCAE24336F38003E1DEA /* Main.storyboard */; };
 		E965FCB224336F39003E1DEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E965FCB124336F39003E1DEA /* Assets.xcassets */; };
 		E965FCB524336F39003E1DEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCB324336F39003E1DEA /* LaunchScreen.storyboard */; };
 		E965FCC1243370E5003E1DEA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC0243370E5003E1DEA /* Default-568h@2x.png */; };
+		E965FCC32433947C003E1DEA /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC22433947C003E1DEA /* Weather.storyboard */; };
+		E965FCC52433948B003E1DEA /* Translate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC42433948B003E1DEA /* Translate.storyboard */; };
+		E965FCC72433949E003E1DEA /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC62433949E003E1DEA /* Exchange.storyboard */; };
+		E965FCC92434DE44003E1DEA /* LanguageList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC82434DE44003E1DEA /* LanguageList.storyboard */; };
+		E9CB1AE524573F540059BC3B /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1AE424573F540059BC3B /* ApiKeys.swift */; };
+		E9CB1AE924573FD30059BC3B /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9CB1AE824573FD30059BC3B /* ApiKeys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E965FCA524336F38003E1DEA /* GreaTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreaTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E965FCA824336F38003E1DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E965FCAA24336F38003E1DEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E965FCAC24336F38003E1DEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E965FCAC24336F38003E1DEA /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		E965FCAF24336F38003E1DEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E965FCB124336F39003E1DEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E965FCB424336F39003E1DEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E965FCB624336F39003E1DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E965FCC0243370E5003E1DEA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E965FCC22433947C003E1DEA /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
+		E965FCC42433948B003E1DEA /* Translate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Translate.storyboard; sourceTree = "<group>"; };
+		E965FCC62433949E003E1DEA /* Exchange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
+		E965FCC82434DE44003E1DEA /* LanguageList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LanguageList.storyboard; sourceTree = "<group>"; };
+		E9CB1AE424573F540059BC3B /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		E9CB1AE824573FD30059BC3B /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +69,10 @@
 			isa = PBXGroup;
 			children = (
 				E965FCA824336F38003E1DEA /* AppDelegate.swift */,
-				E965FCAA24336F38003E1DEA /* SceneDelegate.swift */,
 				E965FCBE243370AF003E1DEA /* Model */,
 				E965FCBD243370A8003E1DEA /* View */,
 				E965FCBC24336F41003E1DEA /* Controller */,
+				E9CB1AE324573F210059BC3B /* Utilities */,
 				E965FCBF243370C9003E1DEA /* Supporting Files  */,
 			);
 			path = GreaTrip;
@@ -71,7 +81,7 @@
 		E965FCBC24336F41003E1DEA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E965FCAC24336F38003E1DEA /* ViewController.swift */,
+				E965FCAC24336F38003E1DEA /* WeatherViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -80,6 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				E965FCAE24336F38003E1DEA /* Main.storyboard */,
+				E965FCC22433947C003E1DEA /* Weather.storyboard */,
+				E965FCC42433948B003E1DEA /* Translate.storyboard */,
+				E965FCC82434DE44003E1DEA /* LanguageList.storyboard */,
+				E965FCC62433949E003E1DEA /* Exchange.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,8 +112,17 @@
 				E965FCB624336F39003E1DEA /* Info.plist */,
 				E965FCB324336F39003E1DEA /* LaunchScreen.storyboard */,
 				E965FCB124336F39003E1DEA /* Assets.xcassets */,
+				E9CB1AE824573FD30059BC3B /* ApiKeys.plist */,
 			);
 			path = "Supporting Files ";
+			sourceTree = "<group>";
+		};
+		E9CB1AE324573F210059BC3B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E9CB1AE424573F540059BC3B /* ApiKeys.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,9 +183,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E965FCC72433949E003E1DEA /* Exchange.storyboard in Resources */,
 				E965FCB524336F39003E1DEA /* LaunchScreen.storyboard in Resources */,
+				E965FCC32433947C003E1DEA /* Weather.storyboard in Resources */,
 				E965FCC1243370E5003E1DEA /* Default-568h@2x.png in Resources */,
+				E965FCC52433948B003E1DEA /* Translate.storyboard in Resources */,
+				E9CB1AE924573FD30059BC3B /* ApiKeys.plist in Resources */,
 				E965FCB224336F39003E1DEA /* Assets.xcassets in Resources */,
+				E965FCC92434DE44003E1DEA /* LanguageList.storyboard in Resources */,
 				E965FCB024336F38003E1DEA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,9 +202,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E965FCAD24336F38003E1DEA /* ViewController.swift in Sources */,
+				E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */,
 				E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */,
-				E965FCAB24336F38003E1DEA /* SceneDelegate.swift in Sources */,
+				E9CB1AE524573F540059BC3B /* ApiKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +350,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
-				INFOPLIST_FILE = GreaTrip/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GreaTrip/Supporting Files /Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,7 +369,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
-				INFOPLIST_FILE = GreaTrip/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GreaTrip/Supporting Files /Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

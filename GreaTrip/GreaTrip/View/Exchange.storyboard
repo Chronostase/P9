@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YX9-jL-y80">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Exchange Rate-->
+        <scene sceneID="q8O-wU-mzk">
+            <objects>
+                <viewController id="YX9-jL-y80" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xee-5k-H1X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Tbe-NZ-rRN"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Exchange Rate" image="Exchange Rate" selectedImage="Exchange Rate" id="D9A-eb-rni"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpb-j8-Idr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="240"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Exchange Rate" width="40" height="40"/>
+    </resources>
+</document>
