@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wqz-dm-wa3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cities Table View Controller-->
+        <scene sceneID="g3j-dj-aje">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Wqz-dm-wa3" customClass="CitiesTableViewController" customModule="GreaTrip" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3hc-Xz-gkD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UyD-kj-eHo">
+                                <rect key="frame" x="0.0" y="102" width="414" height="794"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjb-z1-pbY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="58"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fid-AV-Yhm">
+                                        <rect key="frame" x="20.5" y="12" width="373" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="light" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Fid-AV-Yhm" firstAttribute="centerX" secondItem="zjb-z1-pbY" secondAttribute="centerX" id="0Uz-DK-4kb"/>
+                                    <constraint firstItem="Fid-AV-Yhm" firstAttribute="width" secondItem="zjb-z1-pbY" secondAttribute="width" multiplier="0.9" id="F0y-a5-6k5"/>
+                                    <constraint firstItem="Fid-AV-Yhm" firstAttribute="centerY" secondItem="zjb-z1-pbY" secondAttribute="centerY" id="RDi-72-xdO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="UyD-kj-eHo" secondAttribute="bottom" id="DXJ-Dw-9gz"/>
+                            <constraint firstItem="UyD-kj-eHo" firstAttribute="top" secondItem="zjb-z1-pbY" secondAttribute="bottom" id="MqM-y8-djl"/>
+                            <constraint firstItem="UyD-kj-eHo" firstAttribute="leading" secondItem="5UU-jA-q7b" secondAttribute="leading" id="QPH-Vr-p7Q"/>
+                            <constraint firstItem="5UU-jA-q7b" firstAttribute="trailing" secondItem="zjb-z1-pbY" secondAttribute="trailing" id="UvM-wk-Ze6"/>
+                            <constraint firstItem="zjb-z1-pbY" firstAttribute="top" secondItem="5UU-jA-q7b" secondAttribute="top" id="atC-qu-oXz"/>
+                            <constraint firstItem="zjb-z1-pbY" firstAttribute="leading" secondItem="5UU-jA-q7b" secondAttribute="leading" id="erF-N7-BKB"/>
+                            <constraint firstItem="UyD-kj-eHo" firstAttribute="trailing" secondItem="5UU-jA-q7b" secondAttribute="trailing" id="gja-5z-Wg2"/>
+                            <constraint firstItem="zjb-z1-pbY" firstAttribute="height" secondItem="3hc-Xz-gkD" secondAttribute="height" multiplier="0.065" id="yLc-pC-Tkm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5UU-jA-q7b"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MxP-De-5fs"/>
+                    <connections>
+                        <outlet property="citiesTextField" destination="Fid-AV-Yhm" id="rEx-qI-OCP"/>
+                        <outlet property="tableView" destination="UyD-kj-eHo" id="j1z-C8-ncC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ofj-w6-AKW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-420.28985507246381" y="239.73214285714283"/>
+        </scene>
+    </scenes>
+</document>
