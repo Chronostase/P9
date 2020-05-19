@@ -48,6 +48,7 @@ class WeatherViewController: UIViewController {
                 
             case .failure(let error) :
                 print(error.localizedDescription)
+                self?.displayAlert("Can't get weather, please check your connection and retry")
                 
             }
         }
@@ -64,6 +65,7 @@ class WeatherViewController: UIViewController {
         
         guard let nameArray = self.weather?.list?.map({ $0.weather.first?.icon }) else {
             return
+            //Ne peut pas recevoir les noms d'images
         }
         
         WeatherService().getImage(named: nameArray[index] ?? "") { (success, data) in
@@ -80,6 +82,8 @@ class WeatherViewController: UIViewController {
                 }
             } else {
                 self.requests?[index] = .failed
+                // Doit relancer la requête fail, attention boucle infinie
+                self.getImage(atIndex: index)
             }
         }
     }
@@ -89,6 +93,7 @@ class WeatherViewController: UIViewController {
     private func fillRequestsQueu() {
         guard let weatherArray = self.weather?.list else {
             return
+            // Ne peut pas récupérer la list des temps
         }
         for _ in weatherArray {
             if requests == nil {
@@ -126,6 +131,13 @@ class WeatherViewController: UIViewController {
         }
         citiesTableViewController.delegate = self
         push(citiesTableViewController)
+    }
+    
+    private func displayAlert(_ message: String) {
+        
+        let alertVC = UIAlertController(title: "Error !", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
     
 }

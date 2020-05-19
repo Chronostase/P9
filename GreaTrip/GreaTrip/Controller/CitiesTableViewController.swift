@@ -18,6 +18,7 @@ class CitiesTableViewController: UIViewController {
     
     //MARK: Properties
     
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var citiesTextField: UITextField!
     
@@ -59,6 +60,7 @@ class CitiesTableViewController: UIViewController {
         WeatherService().getWeatherWithUserInteract(cityName: name) { result in
             switch result {
             case .success(let weather):
+
                 guard let city = weather else {
                     return
                 }
@@ -66,16 +68,26 @@ class CitiesTableViewController: UIViewController {
 
                 self.getWeatherImage()
                 DispatchQueue.main.async {
+                    self.tableView.separatorStyle = .singleLine
+                    self.resultLabel.isHidden = true
                     return self.tableView.reloadData()
                 }
                 
             case .failure(let error) :
+                self.weather = nil
+                
+                DispatchQueue.main.async {
+                    self.tableView.separatorStyle = .none
+                    self.resultLabel.isHidden = false
+                    self.tableView.reloadData()
+                }
                 print(error.localizedDescription)
             }
         }
     }
     
     //MARK: - Setup
+    
     
     private func setupTableView() {
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
@@ -113,8 +125,6 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
         return 80
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-
         if weather == nil {
             return 0
         } else {
@@ -129,10 +139,10 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
         return UITableViewCell()
 }
         print(weathers.name)
+        
+        // Find best way to don"t show TempLablel and UIImageView
         cell.temperatureLabel.isHidden = true
-//        cell.weatherIcon.isHidden = true
         cell.configureJustTitle(name: weathers.name)
-//        cell.configure(name: weathers.name, temperature: Int(weathers.main.temp), image: data)
         
         return cell
     }
@@ -141,6 +151,9 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
         delegate?.sendData(city: weather)
         navigationController?.popViewController(animated: true)
         print("Enter in didSelect")
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
 
@@ -157,7 +170,6 @@ extension CitiesTableViewController: UITextFieldDelegate {
         }
         let adjutedText = text.replacingOccurrences(of: " ", with: "%20")
         getWeather(name: adjutedText)
-//        getImage()
         
         print(text)
         textField.resignFirstResponder()

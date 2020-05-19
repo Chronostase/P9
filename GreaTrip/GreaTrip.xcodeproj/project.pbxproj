@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E921155D246C190F00AB7718 /* RequestStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921155C246C190F00AB7718 /* RequestStatement.swift */; };
+		E921155F2473F46000AB7718 /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921155E2473F46000AB7718 /* TranslateService.swift */; };
+		E92115612473F47900AB7718 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92115602473F47900AB7718 /* TranslateViewController.swift */; };
+		E92115632474297E00AB7718 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92115622474297E00AB7718 /* Translate.swift */; };
 		E930122E2459D12400B3F9CD /* CitiesTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E930122D2459D12400B3F9CD /* CitiesTableView.storyboard */; };
 		E93F06C62465AF6100AAE4C7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F06C42465AF6100AAE4C7 /* CustomTableViewCell.swift */; };
 		E93F06C72465AF6100AAE4C7 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F06C52465AF6100AAE4C7 /* CustomTableViewCell.xib */; };
@@ -33,6 +36,9 @@
 
 /* Begin PBXFileReference section */
 		E921155C246C190F00AB7718 /* RequestStatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatement.swift; sourceTree = "<group>"; };
+		E921155E2473F46000AB7718 /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
+		E92115602473F47900AB7718 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		E92115622474297E00AB7718 /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		E930122D2459D12400B3F9CD /* CitiesTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CitiesTableView.storyboard; sourceTree = "<group>"; };
 		E93F06C42465AF6100AAE4C7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E93F06C52465AF6100AAE4C7 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 			children = (
 				E965FCAC24336F38003E1DEA /* WeatherViewController.swift */,
 				E9CB1AEF2459A4470059BC3B /* CitiesTableViewController.swift */,
+				E92115602473F47900AB7718 /* TranslateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E9CB1AF32459B1F00059BC3B /* WeatherArray.swift */,
+				E92115622474297E00AB7718 /* Translate.swift */,
 				E9C13F1F24617E310042976F /* ServiceError.swift */,
 				E921155C246C190F00AB7718 /* RequestStatement.swift */,
 			);
@@ -167,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E9CB1AF12459B1CF0059BC3B /* WeatherService.swift */,
+				E921155E2473F46000AB7718 /* TranslateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E921155F2473F46000AB7718 /* TranslateService.swift in Sources */,
 				E9CB1AF22459B1CF0059BC3B /* WeatherService.swift in Sources */,
 				E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */,
 				E9C13F1C245ACC8E0042976F /* pushViewController.swift in Sources */,
@@ -267,6 +277,8 @@
 				E93F06C92466D71400AAE4C7 /* WeatherViewController+CitiesTableViewDelegate.swift in Sources */,
 				E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */,
 				E9CB1AF42459B1F00059BC3B /* WeatherArray.swift in Sources */,
+				E92115632474297E00AB7718 /* Translate.swift in Sources */,
+				E92115612473F47900AB7718 /* TranslateViewController.swift in Sources */,
 				E9CB1AE524573F540059BC3B /* ApiKeys.swift in Sources */,
 				E921155D246C190F00AB7718 /* RequestStatement.swift in Sources */,
 			);

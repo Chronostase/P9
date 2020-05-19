@@ -16,10 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UyD-kj-eHo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UyD-kj-eHo">
                                 <rect key="frame" x="0.0" y="102" width="414" height="794"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No result found, please retry." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yd-WY-XFT">
+                                <rect key="frame" x="41.5" y="430.5" width="331" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjb-z1-pbY">
                                 <rect key="frame" x="0.0" y="44" width="414" height="58"/>
                                 <subviews>
@@ -40,12 +46,16 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="UyD-kj-eHo" secondAttribute="bottom" id="DXJ-Dw-9gz"/>
+                            <constraint firstItem="9yd-WY-XFT" firstAttribute="width" secondItem="3hc-Xz-gkD" secondAttribute="width" multiplier="0.8" id="EYz-DM-j4Z"/>
                             <constraint firstItem="UyD-kj-eHo" firstAttribute="top" secondItem="zjb-z1-pbY" secondAttribute="bottom" id="MqM-y8-djl"/>
+                            <constraint firstItem="9yd-WY-XFT" firstAttribute="centerY" secondItem="5UU-jA-q7b" secondAttribute="centerY" id="Pey-XR-uVg"/>
                             <constraint firstItem="UyD-kj-eHo" firstAttribute="leading" secondItem="5UU-jA-q7b" secondAttribute="leading" id="QPH-Vr-p7Q"/>
                             <constraint firstItem="5UU-jA-q7b" firstAttribute="trailing" secondItem="zjb-z1-pbY" secondAttribute="trailing" id="UvM-wk-Ze6"/>
+                            <constraint firstItem="9yd-WY-XFT" firstAttribute="height" secondItem="3hc-Xz-gkD" secondAttribute="height" multiplier="0.05" id="WZd-Fh-ZZF"/>
                             <constraint firstItem="zjb-z1-pbY" firstAttribute="top" secondItem="5UU-jA-q7b" secondAttribute="top" id="atC-qu-oXz"/>
                             <constraint firstItem="zjb-z1-pbY" firstAttribute="leading" secondItem="5UU-jA-q7b" secondAttribute="leading" id="erF-N7-BKB"/>
                             <constraint firstItem="UyD-kj-eHo" firstAttribute="trailing" secondItem="5UU-jA-q7b" secondAttribute="trailing" id="gja-5z-Wg2"/>
+                            <constraint firstItem="9yd-WY-XFT" firstAttribute="centerX" secondItem="5UU-jA-q7b" secondAttribute="centerX" id="mPz-6H-vDs"/>
                             <constraint firstItem="zjb-z1-pbY" firstAttribute="height" secondItem="3hc-Xz-gkD" secondAttribute="height" multiplier="0.065" id="yLc-pC-Tkm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5UU-jA-q7b"/>
@@ -53,6 +63,7 @@
                     <navigationItem key="navigationItem" id="MxP-De-5fs"/>
                     <connections>
                         <outlet property="citiesTextField" destination="Fid-AV-Yhm" id="rEx-qI-OCP"/>
+                        <outlet property="resultLabel" destination="9yd-WY-XFT" id="Nuo-Pd-tXx"/>
                         <outlet property="tableView" destination="UyD-kj-eHo" id="j1z-C8-ncC"/>
                     </connections>
                 </viewController>

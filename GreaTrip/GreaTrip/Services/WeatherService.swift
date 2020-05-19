@@ -25,7 +25,8 @@ class WeatherService {
     func getWeather(callback: @escaping (Result <WeatherArray?, ServiceError>)  -> Void) {
         guard let request = createWeatherRequest() else {
             callback(.failure(.error))
-            return
+            return 
+            // Impossible de faire le call, cause ne peut pas récupérer l'url
         }
         print(request)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -36,11 +37,13 @@ class WeatherService {
                     
                     callback(.failure(.error))
                     return
+                    // Ne reçoit pas de réponse ou les datas / error
             }
             
             guard let weather = try? JSONDecoder().decode(WeatherArray.self, from: data) else {
                 callback(.failure(.error))
                 return
+                // Ne réussit pas à récupérer l'objet
             }
             
             callback(.success(weather))
@@ -53,6 +56,7 @@ class WeatherService {
             print("something wrong happend")
             callback(.failure(.error))
             return
+            // Pas d'url
         }
         
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -62,12 +66,15 @@ class WeatherService {
                 response.statusCode == 200 else {
                     print("something wrong happend here")
                     callback(.failure(.error))
+                    
                     return
+                    // Ne reçoit pas de réponse ou les datas / error
             }
             
             guard let weather = try? JSONDecoder().decode(Weathers.self, from: data) else {
                 callback(.failure(.error))
                 print("something wrong happend or here")
+                // Ne réussit pas à récupérer l'objet
                 return
             }
             
@@ -79,8 +86,9 @@ class WeatherService {
     func getImage(named imageName: String, callback: @escaping (Bool, Data?) -> Void) {
         guard let request = createImageRequest(iconName: imageName) else {
             return
+            
+            // Pas d'URL
         }
-        //        let url = url
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data,
                 error == nil,
@@ -88,6 +96,7 @@ class WeatherService {
                 response.statusCode == 200  else {
                     
                     callback(false, nil)
+                    // Ne reçoit pas de réponse ou les datas / error
                     return
             }
             let image = data
@@ -110,6 +119,7 @@ class WeatherService {
         print(baseUrl + "weather?q=" + parameter + "&\(commonParameters)" + "myKey")
         guard let key = ApiKeys.value(for: "openWeatherMapAppId"), let url = URL(string: baseUrl + "weather?q=" + parameter + "&\(commonParameters)" + key) else {
             return nil
+            // ne peut pas construire l'url
         }
         return URLRequest(url: url)
     }
@@ -118,9 +128,11 @@ class WeatherService {
         let parameters = "group?id=2984114,5128581&units=metric&APPID="
         
         guard let key = ApiKeys.value(for: "openWeatherMapAppId"), let url = URL(string: baseUrl + parameters + key) else {
+            // ne peut pas construire l'url
             return nil
         }
         
         return URLRequest(url: url)
     }
+
 }

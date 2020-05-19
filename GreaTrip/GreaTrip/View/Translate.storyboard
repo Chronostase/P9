@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jyw-bi-Byc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,46 +11,16 @@
         <!--Translate-->
         <scene sceneID="5ld-iD-iOq">
             <objects>
-                <viewController id="jyw-bi-Byc" sceneMemberID="viewController">
+                <viewController id="jyw-bi-Byc" customClass="TranslateViewController" customModule="GreaTrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wqN-C7-yML">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tZA-6Q-4Ri">
-                                <rect key="frame" x="103.5" y="139" width="207" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73s-wT-UWD">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
-                                        <color key="backgroundColor" red="0.21960784310000001" green="0.22352941179999999" blue="0.22352941179999999" alpha="0.62973565919999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzY-ZJ-hqS">
-                                        <rect key="frame" x="69" y="0.0" width="69" height="30"/>
-                                        <color key="backgroundColor" red="0.21960784310000001" green="0.22352941179999999" blue="0.22352941179999999" alpha="0.62973565919999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCo-du-90H">
-                                        <rect key="frame" x="138" y="0.0" width="69" height="30"/>
-                                        <color key="backgroundColor" red="0.21960784310000001" green="0.22352941179999999" blue="0.22352941179999999" alpha="0.62973565919999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.21960784310000001" green="0.22352941179999999" blue="0.22352941179999999" alpha="0.62973565919999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="tZA-6Q-4Ri" secondAttribute="height" multiplier="69:10" id="nMq-5A-Xoh"/>
-                                </constraints>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eA-BX-Spo">
                                 <rect key="frame" x="31" y="179" width="352" height="538"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-Ai-6v7">
-                                        <rect key="frame" x="0.0" y="5" width="352" height="242"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="352" height="215"/>
                                         <color key="backgroundColor" red="0.2196078431372549" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,8 +32,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-eK-Pmc">
-                                        <rect key="frame" x="0.0" y="291" width="352" height="242"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-eK-Pmc">
+                                        <rect key="frame" x="0.0" y="303" width="352" height="215"/>
                                         <color key="backgroundColor" red="0.2196078431372549" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,18 +48,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="width" secondItem="1eA-BX-Spo" secondAttribute="width" id="M5F-Sf-tJM"/>
+                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="top" secondItem="1eA-BX-Spo" secondAttribute="top" id="Agr-MF-Blc"/>
                                     <constraint firstItem="mS3-eK-Pmc" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="NGv-W7-t0c"/>
-                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="NOJ-qi-KDL"/>
-                                    <constraint firstAttribute="bottom" secondItem="mS3-eK-Pmc" secondAttribute="bottom" constant="5" id="R23-Ps-ppD"/>
-                                    <constraint firstItem="mS3-eK-Pmc" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.45" id="WGr-kM-ND5"/>
-                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="top" secondItem="1eA-BX-Spo" secondAttribute="top" constant="5" id="X0c-3b-piZ"/>
-                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.45" id="b3k-b9-s5F"/>
+                                    <constraint firstAttribute="bottom" secondItem="mS3-eK-Pmc" secondAttribute="bottom" constant="20" id="R23-Ps-ppD"/>
+                                    <constraint firstItem="mS3-eK-Pmc" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.4" id="RUF-mK-iNz"/>
                                     <constraint firstItem="mS3-eK-Pmc" firstAttribute="width" secondItem="1eA-BX-Spo" secondAttribute="width" id="g88-ys-tJa"/>
+                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="jGb-7h-9KP"/>
+                                    <constraint firstItem="gWN-Ai-6v7" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.4" id="n2J-j5-bN5"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ez-Kd-kju">
-                                <rect key="frame" x="145" y="782" width="124" height="30"/>
+                                <rect key="frame" x="145" y="802" width="124" height="30"/>
                                 <color key="backgroundColor" red="0.2196078431372549" green="0.22352941176470587" blue="0.22352941176470587" alpha="0.62973565924657537" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0Ez-Kd-kju" secondAttribute="height" multiplier="62:15" id="LSb-nj-tbi"/>
@@ -101,6 +71,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="translateButton:" destination="jyw-bi-Byc" eventType="touchUpInside" id="qEg-1V-6sz"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQo-TN-Oqh">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="98.5"/>
@@ -125,7 +98,6 @@
                         <constraints>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="height" secondItem="wqN-C7-yML" secondAttribute="height" multiplier="0.6" id="1IN-bq-nAl"/>
                             <constraint firstItem="0Ez-Kd-kju" firstAttribute="centerX" secondItem="wqN-C7-yML" secondAttribute="centerX" id="35i-Gc-ZWV"/>
-                            <constraint firstItem="1eA-BX-Spo" firstAttribute="top" secondItem="tZA-6Q-4Ri" secondAttribute="bottom" constant="10" id="CAI-5h-fzg"/>
                             <constraint firstItem="OQo-TN-Oqh" firstAttribute="top" secondItem="wqN-C7-yML" secondAttribute="top" id="GDW-Rg-vCR"/>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="centerX" secondItem="wqN-C7-yML" secondAttribute="centerX" id="JWi-J7-5TH"/>
                             <constraint firstItem="Y5d-fU-i3C" firstAttribute="trailing" secondItem="OQo-TN-Oqh" secondAttribute="trailing" id="Kdi-xO-8F8"/>
@@ -134,13 +106,16 @@
                             <constraint firstItem="OQo-TN-Oqh" firstAttribute="height" secondItem="wqN-C7-yML" secondAttribute="height" multiplier="0.11" id="NLh-KC-0py"/>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="centerY" secondItem="wqN-C7-yML" secondAttribute="centerY" id="OJI-af-NFH"/>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="width" secondItem="wqN-C7-yML" secondAttribute="width" multiplier="0.85" id="cNY-LD-U7V"/>
-                            <constraint firstItem="tZA-6Q-4Ri" firstAttribute="centerX" secondItem="wqN-C7-yML" secondAttribute="centerX" id="m8u-zY-YNz"/>
-                            <constraint firstItem="Y5d-fU-i3C" firstAttribute="bottom" secondItem="0Ez-Kd-kju" secondAttribute="bottom" constant="50" id="uMK-xT-c5y"/>
-                            <constraint firstItem="tZA-6Q-4Ri" firstAttribute="width" secondItem="wqN-C7-yML" secondAttribute="width" multiplier="0.5" id="vl6-cO-JFi"/>
+                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="width" secondItem="wqN-C7-yML" secondAttribute="width" multiplier="0.850242" id="f8E-Oe-KsO"/>
+                            <constraint firstItem="Y5d-fU-i3C" firstAttribute="bottom" secondItem="0Ez-Kd-kju" secondAttribute="bottom" constant="30" id="uMK-xT-c5y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y5d-fU-i3C"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translate" image="Translate" selectedImage="Translate" id="low-XD-Uti"/>
+                    <connections>
+                        <outlet property="editableTextField" destination="gWN-Ai-6v7" id="FOw-ba-8cQ"/>
+                        <outlet property="translatedTextField" destination="mS3-eK-Pmc" id="g1S-du-Gal"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqY-T9-T8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
