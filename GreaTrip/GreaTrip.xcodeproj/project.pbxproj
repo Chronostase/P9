@@ -24,7 +24,6 @@
 		E965FCC32433947C003E1DEA /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC22433947C003E1DEA /* Weather.storyboard */; };
 		E965FCC52433948B003E1DEA /* Translate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC42433948B003E1DEA /* Translate.storyboard */; };
 		E965FCC72433949E003E1DEA /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC62433949E003E1DEA /* Exchange.storyboard */; };
-		E965FCC92434DE44003E1DEA /* LanguageTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCC82434DE44003E1DEA /* LanguageTableView.storyboard */; };
 		E9C13F1C245ACC8E0042976F /* pushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C13F1B245ACC8E0042976F /* pushViewController.swift */; };
 		E9C13F2024617E310042976F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C13F1F24617E310042976F /* ServiceError.swift */; };
 		E9CB1AE524573F540059BC3B /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1AE424573F540059BC3B /* ApiKeys.swift */; };
@@ -54,7 +53,6 @@
 		E965FCC22433947C003E1DEA /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
 		E965FCC42433948B003E1DEA /* Translate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Translate.storyboard; sourceTree = "<group>"; };
 		E965FCC62433949E003E1DEA /* Exchange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
-		E965FCC82434DE44003E1DEA /* LanguageTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LanguageTableView.storyboard; sourceTree = "<group>"; };
 		E9C13F1B245ACC8E0042976F /* pushViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pushViewController.swift; sourceTree = "<group>"; };
 		E9C13F1F24617E310042976F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		E9CB1AE424573F540059BC3B /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				E965FCC22433947C003E1DEA /* Weather.storyboard */,
 				E930122D2459D12400B3F9CD /* CitiesTableView.storyboard */,
 				E965FCC42433948B003E1DEA /* Translate.storyboard */,
-				E965FCC82434DE44003E1DEA /* LanguageTableView.storyboard */,
 				E965FCC62433949E003E1DEA /* Exchange.storyboard */,
 				E93F06C52465AF6100AAE4C7 /* CustomTableViewCell.xib */,
 			);
@@ -254,7 +251,6 @@
 				E965FCC52433948B003E1DEA /* Translate.storyboard in Resources */,
 				E9CB1AE924573FD30059BC3B /* ApiKeys.plist in Resources */,
 				E965FCB224336F39003E1DEA /* Assets.xcassets in Resources */,
-				E965FCC92434DE44003E1DEA /* LanguageTableView.storyboard in Resources */,
 				E965FCB024336F38003E1DEA /* Main.storyboard in Resources */,
 				E93F06C72465AF6100AAE4C7 /* CustomTableViewCell.xib in Resources */,
 			);

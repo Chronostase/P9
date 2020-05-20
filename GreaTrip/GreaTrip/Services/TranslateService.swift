@@ -11,8 +11,7 @@ import Foundation
 class TranslateService {
     
     //MARK- Properties
-    
-    private let baseUrl = "https://translation.googleapis.com/language/translate/v2?"
+    private let baseUrl = URL(string: "https://translation.googleapis.com/language/translate/v2?")
     private let session: URLSession
     
     init(session: URLSession = URLSession(configuration: .default)) {
@@ -48,15 +47,17 @@ class TranslateService {
     }
     
     func createTranslateRequest(with parameter: String) -> URLRequest? {
-        
-        guard let key = ApiKeys.value(for: "cloudTranslater"), let url = URL(string: baseUrl + parameter + key) else {
-            // ne peut pas construire l'url
+        guard let url = baseUrl else {
             return nil
         }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let body = "&source=fr&target=en&format=text&key="
+        guard let key = ApiKeys.value(for: "cloudTranslater") else {
+            return nil
+        }
+        let body = "key=\(key)&q=\(parameter)&source=fr&target=en&format=text"
         request.httpBody = body.data(using: .utf8)
+        
         return request
     }
 }
