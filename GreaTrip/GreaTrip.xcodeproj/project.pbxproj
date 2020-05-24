@@ -15,6 +15,9 @@
 		E93F06C62465AF6100AAE4C7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F06C42465AF6100AAE4C7 /* CustomTableViewCell.swift */; };
 		E93F06C72465AF6100AAE4C7 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93F06C52465AF6100AAE4C7 /* CustomTableViewCell.xib */; };
 		E93F06C92466D71400AAE4C7 /* WeatherViewController+CitiesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93F06C82466D71400AAE4C7 /* WeatherViewController+CitiesTableViewDelegate.swift */; };
+		E947CFA9247A9F6C00DB6827 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFA8247A9F6C00DB6827 /* ExchangeViewController.swift */; };
+		E947CFAB247AD1CC00DB6827 /* ExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFAA247AD1CC00DB6827 /* ExchangeService.swift */; };
+		E947CFAD247AD31600DB6827 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFAC247AD31600DB6827 /* Exchange.swift */; };
 		E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCA824336F38003E1DEA /* AppDelegate.swift */; };
 		E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCAC24336F38003E1DEA /* WeatherViewController.swift */; };
 		E965FCB024336F38003E1DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCAE24336F38003E1DEA /* Main.storyboard */; };
@@ -42,6 +45,9 @@
 		E93F06C42465AF6100AAE4C7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E93F06C52465AF6100AAE4C7 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		E93F06C82466D71400AAE4C7 /* WeatherViewController+CitiesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+CitiesTableViewDelegate.swift"; sourceTree = "<group>"; };
+		E947CFA8247A9F6C00DB6827 /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		E947CFAA247AD1CC00DB6827 /* ExchangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeService.swift; sourceTree = "<group>"; };
+		E947CFAC247AD31600DB6827 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		E965FCA524336F38003E1DEA /* GreaTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreaTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E965FCA824336F38003E1DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E965FCAC24336F38003E1DEA /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 				E965FCAC24336F38003E1DEA /* WeatherViewController.swift */,
 				E9CB1AEF2459A4470059BC3B /* CitiesTableViewController.swift */,
 				E92115602473F47900AB7718 /* TranslateViewController.swift */,
+				E947CFA8247A9F6C00DB6827 /* ExchangeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -135,6 +142,7 @@
 				E92115622474297E00AB7718 /* Translate.swift */,
 				E9C13F1F24617E310042976F /* ServiceError.swift */,
 				E921155C246C190F00AB7718 /* RequestStatement.swift */,
+				E947CFAC247AD31600DB6827 /* Exchange.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 			children = (
 				E9CB1AF12459B1CF0059BC3B /* WeatherService.swift */,
 				E921155E2473F46000AB7718 /* TranslateService.swift */,
+				E947CFAA247AD1CC00DB6827 /* ExchangeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -264,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E921155F2473F46000AB7718 /* TranslateService.swift in Sources */,
+				E947CFA9247A9F6C00DB6827 /* ExchangeViewController.swift in Sources */,
 				E9CB1AF22459B1CF0059BC3B /* WeatherService.swift in Sources */,
 				E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */,
+				E947CFAB247AD1CC00DB6827 /* ExchangeService.swift in Sources */,
 				E9C13F1C245ACC8E0042976F /* pushViewController.swift in Sources */,
 				E9CB1AF02459A4470059BC3B /* CitiesTableViewController.swift in Sources */,
 				E93F06C62465AF6100AAE4C7 /* CustomTableViewCell.swift in Sources */,
@@ -274,6 +285,7 @@
 				E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */,
 				E9CB1AF42459B1F00059BC3B /* WeatherArray.swift in Sources */,
 				E92115632474297E00AB7718 /* Translate.swift in Sources */,
+				E947CFAD247AD31600DB6827 /* Exchange.swift in Sources */,
 				E92115612473F47900AB7718 /* TranslateViewController.swift in Sources */,
 				E9CB1AE524573F540059BC3B /* ApiKeys.swift in Sources */,
 				E921155D246C190F00AB7718 /* RequestStatement.swift in Sources */,

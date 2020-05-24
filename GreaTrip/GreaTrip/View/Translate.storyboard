@@ -21,7 +21,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please type your text to translate here " textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-Ai-6v7">
                                         <rect key="frame" x="0.0" y="0.0" width="352" height="215"/>
-                                        <color key="backgroundColor" red="0.2196078431372549" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
@@ -33,7 +33,7 @@
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Your text will appear here. " textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-eK-Pmc">
                                         <rect key="frame" x="0.0" y="303" width="352" height="215"/>
-                                        <color key="backgroundColor" red="0.2196078431372549" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -44,7 +44,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="gWN-Ai-6v7" firstAttribute="top" secondItem="1eA-BX-Spo" secondAttribute="top" id="Agr-MF-Blc"/>
                                     <constraint firstItem="mS3-eK-Pmc" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="NGv-W7-t0c"/>
@@ -57,7 +57,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ez-Kd-kju">
                                 <rect key="frame" x="145" y="802" width="124" height="30"/>
-                                <color key="backgroundColor" red="0.2196078431372549" green="0.22352941176470587" blue="0.22352941176470587" alpha="0.62973565924657537" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0Ez-Kd-kju" secondAttribute="height" multiplier="62:15" id="LSb-nj-tbi"/>
                                 </constraints>
@@ -74,25 +74,25 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQo-TN-Oqh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="98.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM2-h1-fFC">
-                                        <rect key="frame" x="41.5" y="48.5" width="331" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <rect key="frame" x="41.5" y="57.5" width="331" height="34.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.70196078431372544" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="rM2-h1-fFC" firstAttribute="centerX" secondItem="OQo-TN-Oqh" secondAttribute="centerX" id="O4H-Wh-5Ud"/>
-                                    <constraint firstAttribute="bottom" secondItem="rM2-h1-fFC" secondAttribute="bottom" constant="15" id="bJZ-Xj-jUb"/>
+                                    <constraint firstAttribute="bottom" secondItem="rM2-h1-fFC" secondAttribute="bottom" constant="5" id="bJZ-Xj-jUb"/>
                                     <constraint firstItem="rM2-h1-fFC" firstAttribute="height" secondItem="OQo-TN-Oqh" secondAttribute="height" multiplier="0.35533" id="qXQ-1F-dhx"/>
                                     <constraint firstItem="rM2-h1-fFC" firstAttribute="width" secondItem="OQo-TN-Oqh" secondAttribute="width" multiplier="0.8" id="uL3-gn-vqN"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="height" secondItem="wqN-C7-yML" secondAttribute="height" multiplier="0.6" id="1IN-bq-nAl"/>
                             <constraint firstItem="0Ez-Kd-kju" firstAttribute="centerX" secondItem="wqN-C7-yML" secondAttribute="centerX" id="35i-Gc-ZWV"/>
@@ -101,7 +101,7 @@
                             <constraint firstItem="Y5d-fU-i3C" firstAttribute="trailing" secondItem="OQo-TN-Oqh" secondAttribute="trailing" id="Kdi-xO-8F8"/>
                             <constraint firstItem="0Ez-Kd-kju" firstAttribute="width" secondItem="wqN-C7-yML" secondAttribute="width" multiplier="0.3" id="LOm-hm-pet"/>
                             <constraint firstItem="OQo-TN-Oqh" firstAttribute="leading" secondItem="Y5d-fU-i3C" secondAttribute="leading" id="N8s-yg-Vxe"/>
-                            <constraint firstItem="OQo-TN-Oqh" firstAttribute="height" secondItem="wqN-C7-yML" secondAttribute="height" multiplier="0.11" id="NLh-KC-0py"/>
+                            <constraint firstItem="OQo-TN-Oqh" firstAttribute="height" secondItem="wqN-C7-yML" secondAttribute="height" multiplier="0.1085" id="NLh-KC-0py"/>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="centerY" secondItem="wqN-C7-yML" secondAttribute="centerY" id="OJI-af-NFH"/>
                             <constraint firstItem="1eA-BX-Spo" firstAttribute="width" secondItem="wqN-C7-yML" secondAttribute="width" multiplier="0.85" id="cNY-LD-U7V"/>
                             <constraint firstItem="gWN-Ai-6v7" firstAttribute="width" secondItem="wqN-C7-yML" secondAttribute="width" multiplier="0.850242" id="f8E-Oe-KsO"/>
@@ -111,8 +111,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Translate" image="Translate" selectedImage="Translate" id="low-XD-Uti"/>
                     <connections>
-                        <outlet property="editableTextField" destination="gWN-Ai-6v7" id="FOw-ba-8cQ"/>
-                        <outlet property="translatedTextField" destination="mS3-eK-Pmc" id="g1S-du-Gal"/>
+                        <outlet property="editableTextView" destination="gWN-Ai-6v7" id="FOw-ba-8cQ"/>
+                        <outlet property="translatedTextView" destination="mS3-eK-Pmc" id="g1S-du-Gal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqY-T9-T8u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
