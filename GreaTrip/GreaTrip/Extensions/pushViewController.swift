@@ -11,7 +11,8 @@ import UIKit
 extension UIViewController {
     
     func push(_ viewController: UIViewController, animated: Bool = true) {
-        navigationController?.pushViewController(viewController, animated: animated)
+//        navigationController?.pushViewController(viewController, animated: animated)
+        self.present(viewController, animated: animated, completion: nil)
     }
     
 }

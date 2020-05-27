@@ -40,6 +40,9 @@ class CitiesTableViewController: UIViewController {
     }
     
     //MARK: - Methods
+    @IBAction func backButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     private func getWeatherImage() {
         guard let iconName = weather?.weather.first?.icon else {
@@ -149,7 +152,7 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.sendData(city: weather)
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
         print("Enter in didSelect")
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -19,11 +19,15 @@ class ExchangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rateLabel.isHidden = true
-        setupTextField()
-        setupImageView()
+        setup()
+    }
+    @IBAction func reFreshRate(_ sender: UIButton) {
+        self.baseCurrencyTextField.text = ""
+        getExchangeRate()
+        self.targetCurrencyTextField.text = ""
     }
     
-    func getExchangeRate(amount: String) {
+    func getExchangeRate(amount: String = "1") {
         ExchangeService().getExchangeRates() { result in
             switch result {
             case .success(let exchange):
@@ -37,7 +41,11 @@ class ExchangeViewController: UIViewController {
                 guard let userCurrency = Double(amount) else {
                     return
                 }
-                self.refreshTargetTextField(rate, userCurrency)
+                DispatchQueue.main.async {
+                    if self.baseCurrencyTextField.text != "" {
+                        self.refreshTargetTextField(rate, userCurrency)
+                    }
+                }
                 self.showRateLabel(rate)
                 print(amount)
                 
@@ -55,9 +63,13 @@ class ExchangeViewController: UIViewController {
     }
     
     private func refreshTargetTextField(_ rate: Double,_ userAmount: Double) {
-        DispatchQueue.main.async {
             self.targetCurrencyTextField.text = ExchangeService().calculateTargetCurrency(rate, userAmount)
-        }
+    }
+    
+    private func setup() {
+        setupTextField()
+        setupImageView()
+        setupDoneButton()
     }
     
     private func setupImageView() {
@@ -69,12 +81,39 @@ class ExchangeViewController: UIViewController {
         baseCurrencyTextField.delegate = self
         targetCurrencyTextField.delegate = self
     }
+    
+    private func setupDoneButton() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(tapDoneButton))
+        toolBar.setItems([flexibleSpace, doneButton], animated: false)
+        baseCurrencyTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc private func tapDoneButton() {
+        if baseCurrencyTextField.text == "" {
+            DispatchQueue.main.async {
+                self.targetCurrencyTextField.text = ""
+            }
+            view.endEditing(true)
+            //            return
+        } else {
+            guard let text = baseCurrencyTextField.text else {
+                return
+            }
+            getExchangeRate(amount: text)
+            print(text)
+            view.endEditing(true)
+            
+        }
+    }
 }
 
 extension ExchangeViewController: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-       
+        
         guard let text = textField.text else {
             return true
         }
