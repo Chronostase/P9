@@ -18,6 +18,7 @@ class TranslateViewController: UIViewController {
     
     @IBOutlet weak var editableTextView: UITextView!
     @IBOutlet weak var translatedTextView: UITextView!
+    @IBOutlet weak var button: UIButton!
     
     var translation: Translation?
     
@@ -25,8 +26,16 @@ class TranslateViewController: UIViewController {
         super.viewDidLoad()
         setupTextView()
         setupDoneButton()
+//        setupButton()
     }
     
+//    func setupButton() {
+//        button.layer.shadowColor = UIColor.green.cgColor
+//        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        button.layer.shadowOpacity = 0.5
+//        button.layer.shadowRadius = 2
+//        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 12, bottom: 14, right: 12)
+//    }
     
     private func getTranslation() {
         TranslateService().getTranslation(text: editableTextView.text) { result in

@@ -16,33 +16,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQo-TN-Oqh" userLabel="Fake Navigation Bar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="54"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM2-h1-fFC">
-                                        <rect key="frame" x="41.5" y="17.5" width="331" height="19"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.70196078431372544" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="rM2-h1-fFC" firstAttribute="centerX" secondItem="OQo-TN-Oqh" secondAttribute="centerX" id="O4H-Wh-5Ud"/>
-                                    <constraint firstItem="rM2-h1-fFC" firstAttribute="height" secondItem="OQo-TN-Oqh" secondAttribute="height" multiplier="0.35533" id="qXQ-1F-dhx"/>
-                                    <constraint firstItem="rM2-h1-fFC" firstAttribute="centerY" secondItem="OQo-TN-Oqh" secondAttribute="centerY" id="r36-gW-Fo0"/>
-                                    <constraint firstItem="rM2-h1-fFC" firstAttribute="width" secondItem="OQo-TN-Oqh" secondAttribute="width" multiplier="0.8" id="uL3-gn-vqN"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klj-YN-4FH">
-                                <rect key="frame" x="0.0" y="98" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ez-Kd-kju">
-                                        <rect key="frame" x="134.5" y="704" width="145" height="30"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eA-BX-Spo" userLabel="Content View">
+                                        <rect key="frame" x="31" y="114.5" width="352" height="545"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please type your text to translate here " textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-Ai-6v7">
+                                                <rect key="frame" x="0.0" y="0.0" width="352" height="218"/>
+                                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Your text will appear here. " textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-eK-Pmc">
+                                                <rect key="frame" x="0.0" y="307" width="352" height="218"/>
+                                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="0Ez-Kd-kju" secondAttribute="height" multiplier="29:6" id="9fW-dp-dR2"/>
+                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="width" secondItem="1eA-BX-Spo" secondAttribute="width" id="9QT-8d-7VC"/>
+                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="top" secondItem="1eA-BX-Spo" secondAttribute="top" id="Agr-MF-Blc"/>
+                                            <constraint firstItem="mS3-eK-Pmc" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="NGv-W7-t0c"/>
+                                            <constraint firstAttribute="bottom" secondItem="mS3-eK-Pmc" secondAttribute="bottom" constant="20" id="R23-Ps-ppD"/>
+                                            <constraint firstItem="mS3-eK-Pmc" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.4" id="RUF-mK-iNz"/>
+                                            <constraint firstItem="mS3-eK-Pmc" firstAttribute="width" secondItem="1eA-BX-Spo" secondAttribute="width" id="g88-ys-tJa"/>
+                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="jGb-7h-9KP"/>
+                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.4" id="n2J-j5-bN5"/>
                                         </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ez-Kd-kju">
+                                        <rect key="frame" x="83" y="705.5" width="248" height="38.5"/>
+                                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Translate">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -55,74 +74,45 @@
                                             <action selector="translateButton:" destination="jyw-bi-Byc" eventType="touchUpInside" id="qEg-1V-6sz"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eA-BX-Spo" userLabel="Content View">
-                                        <rect key="frame" x="31" y="113" width="352" height="538"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please type your text to translate here " textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="gWN-Ai-6v7">
-                                                <rect key="frame" x="0.0" y="0.0" width="352" height="215"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Your text will appear here. " textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS3-eK-Pmc">
-                                                <rect key="frame" x="0.0" y="302.5" width="352" height="215.5"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textView>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="width" secondItem="1eA-BX-Spo" secondAttribute="width" id="9QT-8d-7VC"/>
-                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="top" secondItem="1eA-BX-Spo" secondAttribute="top" id="Agr-MF-Blc"/>
-                                            <constraint firstItem="mS3-eK-Pmc" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="NGv-W7-t0c"/>
-                                            <constraint firstAttribute="bottom" secondItem="mS3-eK-Pmc" secondAttribute="bottom" constant="20" id="R23-Ps-ppD"/>
-                                            <constraint firstItem="mS3-eK-Pmc" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.4" id="RUF-mK-iNz"/>
-                                            <constraint firstItem="mS3-eK-Pmc" firstAttribute="width" secondItem="1eA-BX-Spo" secondAttribute="width" id="g88-ys-tJa"/>
-                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="centerX" secondItem="1eA-BX-Spo" secondAttribute="centerX" id="jGb-7h-9KP"/>
-                                            <constraint firstItem="gWN-Ai-6v7" firstAttribute="height" secondItem="1eA-BX-Spo" secondAttribute="height" multiplier="0.4" id="n2J-j5-bN5"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="1eA-BX-Spo" firstAttribute="centerY" secondItem="klj-YN-4FH" secondAttribute="centerY" id="1TJ-c1-jNH"/>
+                                    <constraint firstItem="0Ez-Kd-kju" firstAttribute="height" secondItem="klj-YN-4FH" secondAttribute="height" multiplier="0.05" id="1cA-Nr-rQl"/>
                                     <constraint firstItem="0Ez-Kd-kju" firstAttribute="centerX" secondItem="klj-YN-4FH" secondAttribute="centerX" id="E9A-eX-ZEg"/>
                                     <constraint firstItem="1eA-BX-Spo" firstAttribute="width" secondItem="klj-YN-4FH" secondAttribute="width" multiplier="0.850242" id="ONe-oL-lAy"/>
+                                    <constraint firstItem="1eA-BX-Spo" firstAttribute="centerY" secondItem="klj-YN-4FH" secondAttribute="centerY" id="UCe-Za-NC7"/>
+                                    <constraint firstItem="1eA-BX-Spo" firstAttribute="centerX" secondItem="klj-YN-4FH" secondAttribute="centerX" id="Vmg-W7-WxI"/>
                                     <constraint firstItem="1eA-BX-Spo" firstAttribute="height" secondItem="klj-YN-4FH" secondAttribute="height" multiplier="0.704188" id="a90-sC-qhu"/>
-                                    <constraint firstItem="1eA-BX-Spo" firstAttribute="centerX" secondItem="klj-YN-4FH" secondAttribute="centerX" id="bhG-ue-B5K"/>
-                                    <constraint firstItem="0Ez-Kd-kju" firstAttribute="width" secondItem="klj-YN-4FH" secondAttribute="width" multiplier="0.35" id="hc0-Ia-vdn"/>
+                                    <constraint firstItem="0Ez-Kd-kju" firstAttribute="width" secondItem="klj-YN-4FH" secondAttribute="width" multiplier="0.6" id="hc0-Ia-vdn"/>
                                     <constraint firstAttribute="bottom" secondItem="0Ez-Kd-kju" secondAttribute="bottom" constant="30" id="tiX-iD-3GT"/>
                                 </constraints>
                             </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSs-eo-8RB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" red="0.96794027090000001" green="0.96491521599999996" blue="0.96471995119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Translate" id="LxD-Xa-Siv"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.70196078431372544" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OQo-TN-Oqh" firstAttribute="top" secondItem="Y5d-fU-i3C" secondAttribute="top" id="GDW-Rg-vCR"/>
-                            <constraint firstItem="Y5d-fU-i3C" firstAttribute="trailing" secondItem="OQo-TN-Oqh" secondAttribute="trailing" id="Kdi-xO-8F8"/>
-                            <constraint firstItem="klj-YN-4FH" firstAttribute="top" secondItem="OQo-TN-Oqh" secondAttribute="bottom" id="Ls4-uq-d65"/>
-                            <constraint firstItem="OQo-TN-Oqh" firstAttribute="leading" secondItem="Y5d-fU-i3C" secondAttribute="leading" id="N8s-yg-Vxe"/>
-                            <constraint firstItem="OQo-TN-Oqh" firstAttribute="height" secondItem="wqN-C7-yML" secondAttribute="height" multiplier="0.06" id="NLh-KC-0py"/>
+                            <constraint firstItem="HSs-eo-8RB" firstAttribute="trailing" secondItem="Y5d-fU-i3C" secondAttribute="trailing" id="Hq9-BL-roq"/>
+                            <constraint firstItem="HSs-eo-8RB" firstAttribute="leading" secondItem="Y5d-fU-i3C" secondAttribute="leading" id="JdJ-c2-Ubx"/>
+                            <constraint firstItem="klj-YN-4FH" firstAttribute="top" secondItem="HSs-eo-8RB" secondAttribute="bottom" id="Kiy-7y-5gQ"/>
                             <constraint firstItem="Y5d-fU-i3C" firstAttribute="bottom" secondItem="klj-YN-4FH" secondAttribute="bottom" id="NdQ-cb-6vC"/>
                             <constraint firstItem="Y5d-fU-i3C" firstAttribute="trailing" secondItem="klj-YN-4FH" secondAttribute="trailing" id="ZMl-n8-FNe"/>
-                            <constraint firstItem="klj-YN-4FH" firstAttribute="leading" secondItem="wqN-C7-yML" secondAttribute="leading" id="ku1-5b-uZ2"/>
+                            <constraint firstItem="HSs-eo-8RB" firstAttribute="top" secondItem="Y5d-fU-i3C" secondAttribute="top" id="g5O-tv-KEd"/>
+                            <constraint firstItem="klj-YN-4FH" firstAttribute="leading" secondItem="Y5d-fU-i3C" secondAttribute="leading" id="ku1-5b-uZ2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y5d-fU-i3C"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translate" image="Translate" selectedImage="Translate" id="low-XD-Uti"/>
                     <connections>
+                        <outlet property="button" destination="0Ez-Kd-kju" id="4w5-q8-vsN"/>
                         <outlet property="editableTextView" destination="gWN-Ai-6v7" id="FOw-ba-8cQ"/>
                         <outlet property="translatedTextView" destination="mS3-eK-Pmc" id="g1S-du-Gal"/>
                     </connections>

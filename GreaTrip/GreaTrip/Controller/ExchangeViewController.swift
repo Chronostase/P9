@@ -11,23 +11,24 @@ import UIKit
 
 class ExchangeViewController: UIViewController {
     @IBOutlet weak var baseCurrencyTextField: UITextField!
-    @IBOutlet weak var baseCurrencyImage: UIImageView!
     @IBOutlet weak var targetCurrencyTextField: UITextField!
-    @IBOutlet weak var targetCurrencyImage: UIImageView!
     @IBOutlet weak var rateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         rateLabel.isHidden = true
         setup()
+        getExchangeRate()
     }
-    @IBAction func reFreshRate(_ sender: UIButton) {
+    
+    @IBAction func refreshButton(_ sender: UIBarButtonItem) {
         self.baseCurrencyTextField.text = ""
         getExchangeRate()
         self.targetCurrencyTextField.text = ""
     }
     
-    func getExchangeRate(amount: String = "1") {
+    
+    private func getExchangeRate(amount: String = "1") {
         ExchangeService().getExchangeRates() { result in
             switch result {
             case .success(let exchange):
@@ -63,18 +64,12 @@ class ExchangeViewController: UIViewController {
     }
     
     private func refreshTargetTextField(_ rate: Double,_ userAmount: Double) {
-            self.targetCurrencyTextField.text = ExchangeService().calculateTargetCurrency(rate, userAmount)
+        self.targetCurrencyTextField.text = ExchangeService().calculateTargetCurrency(rate, userAmount) + "＄"
     }
     
     private func setup() {
         setupTextField()
-        setupImageView()
         setupDoneButton()
-    }
-    
-    private func setupImageView() {
-        baseCurrencyImage.image = UIImage(named: "EUR Flag")
-        targetCurrencyImage.image = UIImage(named: "USA Flag")
     }
     
     private func setupTextField() {
@@ -83,29 +78,32 @@ class ExchangeViewController: UIViewController {
     }
     
     private func setupDoneButton() {
-        let toolBar = UIToolbar()
+        let toolBar =  UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         toolBar.sizeToFit()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(tapDoneButton))
         toolBar.setItems([flexibleSpace, doneButton], animated: false)
         baseCurrencyTextField.inputAccessoryView = toolBar
     }
-    
+
     @objc private func tapDoneButton() {
         if baseCurrencyTextField.text == "" {
             DispatchQueue.main.async {
                 self.targetCurrencyTextField.text = ""
             }
             view.endEditing(true)
-            //            return
+            return
         } else {
             guard let text = baseCurrencyTextField.text else {
                 return
             }
             getExchangeRate(amount: text)
+            DispatchQueue.main.async {
+                self.baseCurrencyTextField.text = text + " €"
+            }
             print(text)
             view.endEditing(true)
-            
+
         }
     }
 }
@@ -118,7 +116,6 @@ extension ExchangeViewController: UITextFieldDelegate {
             return true
         }
         getExchangeRate(amount: text)
-        print(text)
         textField.resignFirstResponder()
         
         return true

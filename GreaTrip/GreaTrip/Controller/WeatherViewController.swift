@@ -22,7 +22,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-//        setup()
+        setup()
         getWeather()
         
         tableView.dataSource = self
@@ -30,9 +30,6 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK: - Func Weather
-    @IBAction func AddButton(_ sender: UIButton) {
-        pushCitiesTableView()
-    }
     
     private func getWeather() {
         WeatherService().getWeather { [weak self] result in
@@ -107,20 +104,20 @@ class WeatherViewController: UIViewController {
         }
     }
     
-//    func setup() {
-//        let button = UIButton(type: .custom)
-//        if let image = UIImage(named: "Group") {
-//            button.setImage(image, for: .normal)
-//            button.tintColor = .white
-//        } else {
-//            button.setTitle("Add city", for: .normal)
-//        }
-//        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-//        button.addTarget(self, action: #selector(pushCitiesTableView), for: .touchUpInside)
-//        let rightButton = UIBarButtonItem(customView: button)
-//
-//        navigationItem.rightBarButtonItem = rightButton
-//    }
+    func setup() {
+        let button = UIButton(type: .custom)
+        if let image = UIImage(named: "Group") {
+            button.setImage(image, for: .normal)
+            button.tintColor = .blue
+        } else {
+            button.setTitle("Add city", for: .normal)
+        }
+        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        button.addTarget(self, action: #selector(pushCitiesTableView), for: .touchUpInside)
+        let rightButton = UIBarButtonItem(customView: button)
+
+        navigationItem.rightBarButtonItem = rightButton
+    }
     
     private func setupTableView() {
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
