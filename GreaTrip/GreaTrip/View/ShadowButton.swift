@@ -1,18 +1,18 @@
 //
-//  RoundedButton.swift
+//  ShadowButton.swift
 //  GreaTrip
 //
-//  Created by Thomas on 01/06/2020.
+//  Created by Thomas on 02/06/2020.
 //  Copyright © 2020 Thomas. All rights reserved.
 //
 
 import UIKit
 
-class RoundedButton: UIButton {
+class ShadowButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+        // Look info
         layoutSubviews()
     }
     
@@ -23,14 +23,12 @@ class RoundedButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layoutIfNeeded()
-        layer.cornerRadius = bounds.height / 2
-        layer.borderWidth = 3
-        layer.borderColor = UIColor.darkGray.cgColor
-        imageEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowRadius = 2
-        layer.shadowOpacity = 0.2
+        layer.shadowOpacity = 0.15
+        layer.shadowRadius = 1
         layer.shadowOffset = .zero
+        
+        layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        layer.borderWidth = 1
     }
 }

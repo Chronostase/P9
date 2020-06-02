@@ -108,7 +108,7 @@ class WeatherViewController: UIViewController {
         let button = UIButton(type: .custom)
         if let image = UIImage(named: "Group") {
             button.setImage(image, for: .normal)
-            button.tintColor = .blue
+            button.tintColor = .systemRed
         } else {
             button.setTitle("Add city", for: .normal)
         }

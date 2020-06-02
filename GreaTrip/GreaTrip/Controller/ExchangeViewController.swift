@@ -98,12 +98,16 @@ class ExchangeViewController: UIViewController {
                 return
             }
             getExchangeRate(amount: text)
-            DispatchQueue.main.async {
-                self.baseCurrencyTextField.text = text + " €"
+            // Symbole doit passer en dernier
+            if text.contains(" €") {
+                print(text)
+                view.endEditing(true)
+            } else {
+                DispatchQueue.main.async {
+                    self.baseCurrencyTextField.text = text + " €"
+                }
             }
-            print(text)
             view.endEditing(true)
-
         }
     }
 }

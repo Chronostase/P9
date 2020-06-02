@@ -20,6 +20,7 @@
 		E947CFAD247AD31600DB6827 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFAC247AD31600DB6827 /* Exchange.swift */; };
 		E947CFB52485638600DB6827 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB42485638600DB6827 /* ShadowView.swift */; };
 		E947CFB724858F0500DB6827 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB624858F0500DB6827 /* RoundedButton.swift */; };
+		E947CFB9248657B600DB6827 /* BottomBorderTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB8248657B600DB6827 /* BottomBorderTextFields.swift */; };
 		E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCA824336F38003E1DEA /* AppDelegate.swift */; };
 		E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCAC24336F38003E1DEA /* WeatherViewController.swift */; };
 		E965FCB024336F38003E1DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCAE24336F38003E1DEA /* Main.storyboard */; };
@@ -36,6 +37,8 @@
 		E9CB1AF02459A4470059BC3B /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1AEF2459A4470059BC3B /* CitiesTableViewController.swift */; };
 		E9CB1AF22459B1CF0059BC3B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1AF12459B1CF0059BC3B /* WeatherService.swift */; };
 		E9CB1AF42459B1F00059BC3B /* WeatherArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1AF32459B1F00059BC3B /* WeatherArray.swift */; };
+		E9F5A3F1248698690008DD3A /* ShadowTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5A3F0248698690008DD3A /* ShadowTextView.swift */; };
+		E9F5A3F32486B8460008DD3A /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5A3F22486B8460008DD3A /* ShadowButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,7 @@
 		E947CFAC247AD31600DB6827 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		E947CFB42485638600DB6827 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		E947CFB624858F0500DB6827 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		E947CFB8248657B600DB6827 /* BottomBorderTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderTextFields.swift; sourceTree = "<group>"; };
 		E965FCA524336F38003E1DEA /* GreaTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreaTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E965FCA824336F38003E1DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E965FCAC24336F38003E1DEA /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		E9CB1AEF2459A4470059BC3B /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
 		E9CB1AF12459B1CF0059BC3B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		E9CB1AF32459B1F00059BC3B /* WeatherArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherArray.swift; sourceTree = "<group>"; };
+		E9F5A3F0248698690008DD3A /* ShadowTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowTextView.swift; sourceTree = "<group>"; };
+		E9F5A3F22486B8460008DD3A /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +142,10 @@
 				E965FCC62433949E003E1DEA /* Exchange.storyboard */,
 				E93F06C52465AF6100AAE4C7 /* CustomTableViewCell.xib */,
 				E947CFB42485638600DB6827 /* ShadowView.swift */,
+				E9F5A3F0248698690008DD3A /* ShadowTextView.swift */,
+				E9F5A3F22486B8460008DD3A /* ShadowButton.swift */,
 				E947CFB624858F0500DB6827 /* RoundedButton.swift */,
+				E947CFB8248657B600DB6827 /* BottomBorderTextFields.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,8 +289,10 @@
 			files = (
 				E947CFB52485638600DB6827 /* ShadowView.swift in Sources */,
 				E921155F2473F46000AB7718 /* TranslateService.swift in Sources */,
+				E947CFB9248657B600DB6827 /* BottomBorderTextFields.swift in Sources */,
 				E947CFA9247A9F6C00DB6827 /* ExchangeViewController.swift in Sources */,
 				E947CFB724858F0500DB6827 /* RoundedButton.swift in Sources */,
+				E9F5A3F32486B8460008DD3A /* ShadowButton.swift in Sources */,
 				E9CB1AF22459B1CF0059BC3B /* WeatherService.swift in Sources */,
 				E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */,
 				E947CFAB247AD1CC00DB6827 /* ExchangeService.swift in Sources */,
@@ -289,6 +300,7 @@
 				E9CB1AF02459A4470059BC3B /* CitiesTableViewController.swift in Sources */,
 				E93F06C62465AF6100AAE4C7 /* CustomTableViewCell.swift in Sources */,
 				E9C13F2024617E310042976F /* ServiceError.swift in Sources */,
+				E9F5A3F1248698690008DD3A /* ShadowTextView.swift in Sources */,
 				E93F06C92466D71400AAE4C7 /* WeatherViewController+CitiesTableViewDelegate.swift in Sources */,
 				E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */,
 				E9CB1AF42459B1F00059BC3B /* WeatherArray.swift in Sources */,

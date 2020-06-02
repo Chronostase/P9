@@ -24,18 +24,8 @@ class TranslateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextView()
-        setupDoneButton()
-//        setupButton()
+        setup()
     }
-    
-//    func setupButton() {
-//        button.layer.shadowColor = UIColor.green.cgColor
-//        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        button.layer.shadowOpacity = 0.5
-//        button.layer.shadowRadius = 2
-//        button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 12, bottom: 14, right: 12)
-//    }
     
     private func getTranslation() {
         TranslateService().getTranslation(text: editableTextView.text) { result in
@@ -55,15 +45,20 @@ class TranslateViewController: UIViewController {
     
     //MARK- Setup
     
+    private func setup() {
+        setupTextView()
+        setupDoneButton()
+    }
+    
     private func setupDoneButton() {
-        let toolBar = UIToolbar()
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         toolBar.sizeToFit()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(tapDoneButton))
         toolBar.setItems([flexibleSpace, doneButton], animated: false)
         editableTextView.inputAccessoryView = toolBar
     }
-    
+
     @objc private func tapDoneButton() {
         view.endEditing(true)
     }
@@ -87,6 +82,5 @@ extension TranslateViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         editableTextView.text = nil
-        editableTextView.textColor = .white
     }
 }

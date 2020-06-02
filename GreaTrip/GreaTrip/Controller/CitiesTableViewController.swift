@@ -11,6 +11,8 @@ import UIKit
 
 protocol CitiesTableViewDelegate: class {
     func sendData(city: Weathers?)
+    
+    //retirer
     func getCityFailed(city: Weathers?)
 }
 
