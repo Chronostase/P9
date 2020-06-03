@@ -51,6 +51,7 @@ class WeatherService {
         task.resume()
     }
     
+    
     func getWeatherWithUserInteract(cityName: String, callback: @escaping (Result <Weathers?, ServiceError>)  -> Void) {
         guard let request = createWeatherRequestWithUserInteract(parameter: cityName) else {
             print("something wrong happend")
@@ -85,8 +86,8 @@ class WeatherService {
     
     func getImage(named imageName: String, callback: @escaping (Bool, Data?) -> Void) {
         guard let request = createImageRequest(iconName: imageName) else {
-            return
             
+            return
             // Pas d'URL
         }
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -134,5 +135,4 @@ class WeatherService {
         
         return URLRequest(url: url)
     }
-
 }

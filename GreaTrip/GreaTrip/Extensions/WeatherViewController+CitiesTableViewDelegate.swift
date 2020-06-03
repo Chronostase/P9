@@ -16,10 +16,5 @@ extension WeatherViewController: CitiesTableViewDelegate {
         }
         self.weather?.list?.append(city)
         self.tableView.reloadData()
-        
-    }
-    
-    func getCityFailed(city: Weathers?) {
-        print("yes")
     }
 }

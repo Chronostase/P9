@@ -97,14 +97,14 @@ class ExchangeViewController: UIViewController {
             guard let text = baseCurrencyTextField.text else {
                 return
             }
-            getExchangeRate(amount: text)
-            // Symbole doit passer en dernier
-            if text.contains(" €") {
-                print(text)
+            let adjustedText = text.replacingOccurrences(of: ",", with: ".")
+            getExchangeRate(amount: adjustedText)
+            if adjustedText.contains(" €") {
+                print(adjustedText)
                 view.endEditing(true)
             } else {
                 DispatchQueue.main.async {
-                    self.baseCurrencyTextField.text = text + " €"
+                    self.baseCurrencyTextField.text = adjustedText + " €"
                 }
             }
             view.endEditing(true)
@@ -122,6 +122,20 @@ extension ExchangeViewController: UITextFieldDelegate {
         getExchangeRate(amount: text)
         textField.resignFirstResponder()
         
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = nil 
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = baseCurrencyTextField.text {
+            let countDots = text.components(separatedBy: ".").count - 1
+            if countDots > 0 && string == "." {
+                return false
+            }
+        }
         return true
     }
 }

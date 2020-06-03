@@ -10,26 +10,20 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    
-    
     //MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     var weather: WeatherArray?
     var requests: [RequestStatement]?
     
-    //MARK: - Function
+    //MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
         setup()
         getWeather()
-        
-        tableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
-    //MARK: - Func Weather
+    //MARK: - Call API
     
     private func getWeather() {
         WeatherService().getWeather { [weak self] result in
@@ -40,7 +34,7 @@ class WeatherViewController: UIViewController {
                     return
                 }
                 self?.weather = weather
-                self?.fillRequestsQueu()
+                self?.fillRequestsQueue()
                 self?.getImage()
                 DispatchQueue.main.async {
                     return self?.tableView.reloadData()
@@ -52,11 +46,6 @@ class WeatherViewController: UIViewController {
                 
             }
         }
-    }
-    
-    //MARK: - Func Image
-    private func isAllImageFetched() -> Bool {
-        return requests?.filter { $0 == .finished }.count == requests?.count
     }
     
     private func getImage(atIndex index: Int = 0) {
@@ -71,11 +60,10 @@ class WeatherViewController: UIViewController {
         WeatherService().getImage(named: nameArray[index] ?? "") { (success, data) in
             self.requests?[index] = .finished
             if success, let image = data {
-                // Append or do somethinf with image received
                 self.weather?.list?[index].imageData = image
                 if self.isAllImageFetched() {
                     DispatchQueue.main.async {
-                      return  self.tableView.reloadData()
+                        return  self.tableView.reloadData()
                     }
                 } else {
                     self.getImage(atIndex: index + 1)
@@ -88,9 +76,14 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    
     //MARK: - Setup
     
-    private func fillRequestsQueu() {
+    private func isAllImageFetched() -> Bool {
+        return requests?.filter { $0 == .finished }.count == requests?.count
+    }
+    
+    private func fillRequestsQueue() {
         guard let weatherArray = self.weather?.list else {
             return
             // Ne peut pas récupérer la list des temps
@@ -104,7 +97,13 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    func setup() {
+    private func setup() {
+        setupCustomCell()
+        setTableViewDataSource()
+        setupNavigationBarButton()
+    }
+    
+    private func setupNavigationBarButton() {
         let button = UIButton(type: .custom)
         if let image = UIImage(named: "Group") {
             button.setImage(image, for: .normal)
@@ -115,13 +114,19 @@ class WeatherViewController: UIViewController {
         button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         button.addTarget(self, action: #selector(pushCitiesTableView), for: .touchUpInside)
         let rightButton = UIBarButtonItem(customView: button)
-
+        
         navigationItem.rightBarButtonItem = rightButton
     }
     
-    private func setupTableView() {
+    private func setTableViewDataSource() {
+        tableView.dataSource = self
+    }
+    
+    private func setupCustomCell() {
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
+        
+        
     }
     
     @objc func pushCitiesTableView() {
@@ -155,7 +160,7 @@ extension WeatherViewController: UITableViewDataSource {
             let data = weather.imageData else {
                 return UITableViewCell()
         }
-        
+        cell.isUserInteractionEnabled = false
         cell.configureAllCell(name: weather.name, temperature: Int(weather.main.temp), image: data)
         
         return cell
@@ -164,7 +169,6 @@ extension WeatherViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("enter in did select")
     }
-    
 }
 
 extension WeatherViewController: UITableViewDelegate {

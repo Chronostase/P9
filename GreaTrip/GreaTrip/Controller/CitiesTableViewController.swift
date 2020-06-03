@@ -11,9 +11,6 @@ import UIKit
 
 protocol CitiesTableViewDelegate: class {
     func sendData(city: Weathers?)
-    
-    //retirer
-    func getCityFailed(city: Weathers?)
 }
 
 class CitiesTableViewController: UIViewController {
@@ -24,21 +21,13 @@ class CitiesTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var citiesTextField: UITextField!
     
-    
-//    var city: City?
     var weather: Weathers?
-    
     var tapGestureRecognizer: UITapGestureRecognizer?
-    
     weak var delegate: CitiesTableViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-        setupCitiesTextFieldDelegate()
-        setupTapGesture()
-        tableView.dataSource = self
-        tableView.delegate = self
+        setup()
     }
     
     //MARK: - Methods
@@ -90,8 +79,15 @@ class CitiesTableViewController: UIViewController {
     
     //MARK: - Setup
     
+    private func setup() {
+        setupTableView()
+        setupTapGesture()
+        setupCitiesTextFieldDelegate()
+    }
     
     private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
     }
@@ -102,11 +98,9 @@ class CitiesTableViewController: UIViewController {
     
     private func setupTapGesture() {
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-//        tapGesture.cancelsTouchesInView = false
         guard let tapGesture = tapGestureRecognizer else {
             return
         }
-        
         tableView.addGestureRecognizer(tapGesture)
     }
     
@@ -121,8 +115,7 @@ class CitiesTableViewController: UIViewController {
 }
 
 extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -136,10 +129,9 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomTableViewCell,
-
             let weathers = weather else {
-        return UITableViewCell()
-}
+                return UITableViewCell()
+        }
         print(weathers.name)
         
         // Find best way to don"t show TempLablel and UIImageView
@@ -152,8 +144,8 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.sendData(city: weather)
         navigationController?.popViewController(animated: true)
-        print("Enter in didSelect")
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         view.endEditing(true)
     }
