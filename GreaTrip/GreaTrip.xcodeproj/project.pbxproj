@@ -20,7 +20,7 @@
 		E947CFAD247AD31600DB6827 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFAC247AD31600DB6827 /* Exchange.swift */; };
 		E947CFB52485638600DB6827 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB42485638600DB6827 /* ShadowView.swift */; };
 		E947CFB724858F0500DB6827 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB624858F0500DB6827 /* RoundedButton.swift */; };
-		E947CFB9248657B600DB6827 /* BottomBorderTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB8248657B600DB6827 /* BottomBorderTextFields.swift */; };
+		E947CFB9248657B600DB6827 /* BottomBorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947CFB8248657B600DB6827 /* BottomBorderTextField.swift */; };
 		E965FCA924336F38003E1DEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCA824336F38003E1DEA /* AppDelegate.swift */; };
 		E965FCAD24336F38003E1DEA /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965FCAC24336F38003E1DEA /* WeatherViewController.swift */; };
 		E965FCB024336F38003E1DEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E965FCAE24336F38003E1DEA /* Main.storyboard */; };
@@ -39,6 +39,7 @@
 		E9CB1AF42459B1F00059BC3B /* WeatherArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1AF32459B1F00059BC3B /* WeatherArray.swift */; };
 		E9F5A3F1248698690008DD3A /* ShadowTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5A3F0248698690008DD3A /* ShadowTextView.swift */; };
 		E9F5A3F32486B8460008DD3A /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5A3F22486B8460008DD3A /* ShadowButton.swift */; };
+		E9F5A3F7248FBF100008DD3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F5A3F6248FBF100008DD3A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +56,7 @@
 		E947CFAC247AD31600DB6827 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		E947CFB42485638600DB6827 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		E947CFB624858F0500DB6827 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		E947CFB8248657B600DB6827 /* BottomBorderTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderTextFields.swift; sourceTree = "<group>"; };
+		E947CFB8248657B600DB6827 /* BottomBorderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderTextField.swift; sourceTree = "<group>"; };
 		E965FCA524336F38003E1DEA /* GreaTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreaTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E965FCA824336F38003E1DEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E965FCAC24336F38003E1DEA /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		E9CB1AF32459B1F00059BC3B /* WeatherArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherArray.swift; sourceTree = "<group>"; };
 		E9F5A3F0248698690008DD3A /* ShadowTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowTextView.swift; sourceTree = "<group>"; };
 		E9F5A3F22486B8460008DD3A /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
+		E9F5A3F6248FBF100008DD3A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +147,7 @@
 				E9F5A3F0248698690008DD3A /* ShadowTextView.swift */,
 				E9F5A3F22486B8460008DD3A /* ShadowButton.swift */,
 				E947CFB624858F0500DB6827 /* RoundedButton.swift */,
-				E947CFB8248657B600DB6827 /* BottomBorderTextFields.swift */,
+				E947CFB8248657B600DB6827 /* BottomBorderTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				E9CB1AE424573F540059BC3B /* ApiKeys.swift */,
+				E9F5A3F6248FBF100008DD3A /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -289,7 +292,7 @@
 			files = (
 				E947CFB52485638600DB6827 /* ShadowView.swift in Sources */,
 				E921155F2473F46000AB7718 /* TranslateService.swift in Sources */,
-				E947CFB9248657B600DB6827 /* BottomBorderTextFields.swift in Sources */,
+				E947CFB9248657B600DB6827 /* BottomBorderTextField.swift in Sources */,
 				E947CFA9247A9F6C00DB6827 /* ExchangeViewController.swift in Sources */,
 				E947CFB724858F0500DB6827 /* RoundedButton.swift in Sources */,
 				E9F5A3F32486B8460008DD3A /* ShadowButton.swift in Sources */,
@@ -309,6 +312,7 @@
 				E92115612473F47900AB7718 /* TranslateViewController.swift in Sources */,
 				E9CB1AE524573F540059BC3B /* ApiKeys.swift in Sources */,
 				E921155D246C190F00AB7718 /* RequestStatement.swift in Sources */,
+				E9F5A3F7248FBF100008DD3A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

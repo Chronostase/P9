@@ -36,41 +36,43 @@ class CitiesTableViewController: UIViewController {
         guard let iconName = weather?.weather.first?.icon else {
             return
         }
-        WeatherService().getImage(named: iconName) { (success, data) in
-            if success, let image = data {
-                // Append or do somethinf with image received
-                self.weather?.imageData = image
+        WeatherService().getImage(named: iconName) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.weather?.imageData = image
                 DispatchQueue.main.async {
-                    return  self.tableView.reloadData()
+                    return self?.tableView.reloadData()
                 }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
     
-   private func getWeather(name: String) {
-        WeatherService().getWeatherWithUserInteract(cityName: name) { result in
+    private func getWeather(name: String) {
+        WeatherService().getWeatherWithUserInteract(cityName: name) { [weak self] result in
             switch result {
             case .success(let weather):
-
+                
                 guard let city = weather else {
                     return
                 }
-                self.weather = city
-
-                self.getWeatherImage()
+                self?.weather = city
+                
+                self?.getWeatherImage()
                 DispatchQueue.main.async {
-                    self.tableView.separatorStyle = .singleLine
-                    self.resultLabel.isHidden = true
-                    return self.tableView.reloadData()
+                    self?.tableView.separatorStyle = .singleLine
+                    self?.resultLabel.isHidden = true
+                    self?.tableView.reloadData()
                 }
                 
             case .failure(let error) :
-                self.weather = nil
+                self?.weather = nil
                 
                 DispatchQueue.main.async {
-                    self.tableView.separatorStyle = .none
-                    self.resultLabel.isHidden = false
-                    self.tableView.reloadData()
+                    self?.tableView.separatorStyle = .none
+                    self?.resultLabel.isHidden = false
+                    self?.tableView.reloadData()
                 }
                 print(error.localizedDescription)
             }
@@ -88,8 +90,8 @@ class CitiesTableViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: Constants.Cell.nibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: Constants.Cell.identifier)
     }
     
     private func setupCitiesTextFieldDelegate() {
@@ -115,7 +117,7 @@ class CitiesTableViewController: UIViewController {
 }
 
 extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -128,14 +130,12 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier, for: indexPath) as? CustomTableViewCell,
             let weathers = weather else {
                 return UITableViewCell()
         }
         print(weathers.name)
         
-        // Find best way to don"t show TempLablel and UIImageView
-        cell.temperatureLabel.isHidden = true
         cell.configureJustTitle(name: weathers.name)
         
         return cell
@@ -158,7 +158,7 @@ extension CitiesTableViewController: UITextFieldDelegate {
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-       
+        
         guard let text = textField.text else {
             return true
         }

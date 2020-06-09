@@ -25,7 +25,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEL-Ew-3N5" customClass="ShadowView" customModule="GreaTrip" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your amount ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jh0-SO-drA" userLabel="BaseCurrencyTextField" customClass="BottomBorderTextFields" customModule="GreaTrip" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your amount ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jh0-SO-drA" userLabel="BaseCurrencyTextField" customClass="BottomBorderTextField" customModule="GreaTrip" customModuleProvider="target">
                                                         <rect key="frame" x="145.5" y="73.5" width="248.5" height="18"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -64,7 +64,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugl-zq-IqD" customClass="ShadowView" customModule="GreaTrip" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="155" width="414" height="145.5"/>
                                                 <subviews>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j12-je-tM1" userLabel="TargetCurrencyTextField" customClass="BottomBorderTextFields" customModule="GreaTrip" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j12-je-tM1" userLabel="TargetCurrencyTextField" customClass="BottomBorderTextField" customModule="GreaTrip" customModuleProvider="target">
                                                         <rect key="frame" x="145.5" y="72.5" width="248.5" height="20"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>

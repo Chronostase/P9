@@ -28,14 +28,14 @@ class TranslateViewController: UIViewController {
     }
     
     private func getTranslation() {
-        TranslateService().getTranslation(text: editableTextView.text) { result in
+        TranslateService().getTranslation(text: editableTextView.text)  { [weak self] result in
             switch result {
             case .success(let text):
                 guard let translatedText = text else {
                     return
                 }
-                self.translation = translatedText
-                self.updateTranslatedTextView()
+                self?.translation = translatedText
+                self?.updateTranslatedTextView()
             case .failure(let error):
                 print(error.localizedDescription)
                 

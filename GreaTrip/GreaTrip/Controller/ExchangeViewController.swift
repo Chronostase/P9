@@ -35,7 +35,7 @@ class ExchangeViewController: UIViewController {
                 guard let exchangeRate = exchange else {
                     return
                 }
-                let filterdData = exchangeRate.rates.filter { $0.key == "USD" }
+                let filterdData = exchangeRate.rates.filter { $0.key == Constants.Exchange.dollar }
                 guard let rate = filterdData.values.first else {
                     return
                 }
@@ -58,13 +58,13 @@ class ExchangeViewController: UIViewController {
     
     private func showRateLabel(_ rate: Double) {
         DispatchQueue.main.async {
-            self.rateLabel.text = "The actual currency rate from EUR to USD is \(String(rate))"
+            self.rateLabel.text = Constants.Exchange.rateMessage + "\(String(rate))"
             self.rateLabel.isHidden = false
         }
     }
     
     private func refreshTargetTextField(_ rate: Double,_ userAmount: Double) {
-        self.targetCurrencyTextField.text = ExchangeService().calculateTargetCurrency(rate, userAmount) + "＄"
+        self.targetCurrencyTextField.text = ExchangeService().calculateTargetCurrency(rate, userAmount) + Constants.Exchange.dollarSymbol
     }
     
     private func setup() {
@@ -99,12 +99,12 @@ class ExchangeViewController: UIViewController {
             }
             let adjustedText = text.replacingOccurrences(of: ",", with: ".")
             getExchangeRate(amount: adjustedText)
-            if adjustedText.contains(" €") {
+            if adjustedText.contains(Constants.Exchange.euroSymbol) {
                 print(adjustedText)
                 view.endEditing(true)
             } else {
                 DispatchQueue.main.async {
-                    self.baseCurrencyTextField.text = adjustedText + " €"
+                    self.baseCurrencyTextField.text = adjustedText + Constants.Exchange.euroSymbol
                 }
             }
             view.endEditing(true)
@@ -131,8 +131,8 @@ extension ExchangeViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = baseCurrencyTextField.text {
-            let countDots = text.components(separatedBy: ".").count - 1
-            if countDots > 0 && string == "." {
+            let countDots = text.components(separatedBy: ",").count - 1
+            if countDots > 0 && string == "," {
                 return false
             }
         }

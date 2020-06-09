@@ -42,8 +42,8 @@ class WeatherViewController: UIViewController {
                 
             case .failure(let error) :
                 print(error.localizedDescription)
-                self?.displayAlert("Can't get weather, please check your connection and retry")
-                
+                self?.displayAlert(Constants.Error.wifiError)
+                return
             }
         }
     }
@@ -57,21 +57,25 @@ class WeatherViewController: UIViewController {
             //Ne peut pas recevoir les noms d'images
         }
         
-        WeatherService().getImage(named: nameArray[index] ?? "") { (success, data) in
-            self.requests?[index] = .finished
-            if success, let image = data {
-                self.weather?.list?[index].imageData = image
-                if self.isAllImageFetched() {
-                    DispatchQueue.main.async {
-                        return  self.tableView.reloadData()
-                    }
-                } else {
-                    self.getImage(atIndex: index + 1)
+        WeatherService().getImage(named: nameArray[index] ?? "") { [weak self] result in
+            self?.requests?[index] = .finished
+            switch result {
+                
+            case .success(let image):
+                self?.weather?.list?[index].imageData = image
+                guard self?.isAllImageFetched() == true else {
+                    self?.getImage(atIndex: index + 1)
+                    return
                 }
-            } else {
-                self.requests?[index] = .failed
+                DispatchQueue.main.async {
+                    return  self?.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+                self?.requests?[index] = .failed
                 // Doit relancer la requête fail, attention boucle infinie
-                self.getImage(atIndex: index)
+                self?.getImage(atIndex: index)
             }
         }
     }
@@ -105,12 +109,12 @@ class WeatherViewController: UIViewController {
     
     private func setupNavigationBarButton() {
         let button = UIButton(type: .custom)
-        if let image = UIImage(named: "Group") {
-            button.setImage(image, for: .normal)
-            button.tintColor = .systemRed
-        } else {
-            button.setTitle("Add city", for: .normal)
+        guard let image = UIImage(named: Constants.Button.name) else {
+            return
         }
+        button.setImage(image, for: .normal)
+        button.tintColor = .systemRed
+        
         button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         button.addTarget(self, action: #selector(pushCitiesTableView), for: .touchUpInside)
         let rightButton = UIBarButtonItem(customView: button)
@@ -123,14 +127,14 @@ class WeatherViewController: UIViewController {
     }
     
     private func setupCustomCell() {
-        let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: Constants.Cell.nibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: Constants.Cell.identifier)
         
         
     }
     
     @objc func pushCitiesTableView() {
-        let storyBoard = UIStoryboard(name: "CitiesTableView", bundle: nil)
+        let storyBoard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
         guard let citiesTableViewController = storyBoard.instantiateInitialViewController() as? CitiesTableViewController else {
             return
         }
@@ -140,8 +144,8 @@ class WeatherViewController: UIViewController {
     
     private func displayAlert(_ message: String) {
         
-        let alertVC = UIAlertController(title: "Error !", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        let alertVC = UIAlertController(title: Constants.Error.errorTitle, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: Constants.Error.actionTitle, style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
     
@@ -155,7 +159,7 @@ extension WeatherViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier, for: indexPath) as? CustomTableViewCell,
             let weather = weather?.list?[indexPath.row],
             let data = weather.imageData else {
                 return UITableViewCell()

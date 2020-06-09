@@ -51,8 +51,9 @@ class ExchangeService {
     }
 
     func createExchangeRequest() -> URLRequest? {
+        let exchangeConstants = Constants.Network.Exchange.self
         
-        guard let key = ApiKeys.value(for: "fixerIo"), let url = URL(string: baseUrl +  key) else {
+        guard let key = ApiKeys.value(for: exchangeConstants.fixerIo), let url = URL(string: exchangeConstants.baseUrl +  key) else {
             // ne peut pas construire l'url
             return nil
         }
