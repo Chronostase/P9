@@ -19,11 +19,42 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        
+        setupTableView()
         getWeather()
     }
     
-    //MARK: - Call API
+    //MARK: - Methods
+    
+    private func setupTableView() {
+        setupCustomCell()
+        setTableViewDataSource()
+        setupNavigationBarButton()
+    }
+    
+    private func setupCustomCell() {
+        let nib = UINib(nibName: Constants.Cell.nibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: Constants.Cell.identifier)
+    }
+    
+    private func setTableViewDataSource() {
+        tableView.dataSource = self
+    }
+    
+    private func setupNavigationBarButton() {
+        let button = UIButton(type: .custom)
+        guard let image = UIImage(named: Constants.Button.name) else {
+            return
+        }
+        button.setImage(image, for: .normal)
+        button.tintColor = .systemRed
+        
+        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        button.addTarget(self, action: #selector(pushCitiesTableView), for: .touchUpInside)
+        let rightButton = UIBarButtonItem(customView: button)
+        
+        navigationItem.rightBarButtonItem = rightButton
+    }
     
     private func getWeather() {
         WeatherService().getWeather { [weak self] result in
@@ -101,38 +132,6 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    private func setup() {
-        setupCustomCell()
-        setTableViewDataSource()
-        setupNavigationBarButton()
-    }
-    
-    private func setupNavigationBarButton() {
-        let button = UIButton(type: .custom)
-        guard let image = UIImage(named: Constants.Button.name) else {
-            return
-        }
-        button.setImage(image, for: .normal)
-        button.tintColor = .systemRed
-        
-        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        button.addTarget(self, action: #selector(pushCitiesTableView), for: .touchUpInside)
-        let rightButton = UIBarButtonItem(customView: button)
-        
-        navigationItem.rightBarButtonItem = rightButton
-    }
-    
-    private func setTableViewDataSource() {
-        tableView.dataSource = self
-    }
-    
-    private func setupCustomCell() {
-        let nib = UINib(nibName: Constants.Cell.nibName, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: Constants.Cell.identifier)
-        
-        
-    }
-    
     @objc func pushCitiesTableView() {
         let storyBoard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
         guard let citiesTableViewController = storyBoard.instantiateInitialViewController() as? CitiesTableViewController else {
@@ -149,34 +148,4 @@ class WeatherViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-}
-
-extension WeatherViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return weather?.list?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier, for: indexPath) as? CustomTableViewCell,
-            let weather = weather?.list?[indexPath.row],
-            let data = weather.imageData else {
-                return UITableViewCell()
-        }
-        cell.isUserInteractionEnabled = false
-        cell.configureAllCell(name: weather.name, temperature: Int(weather.main.temp), image: data)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("enter in did select")
-    }
-}
-
-extension WeatherViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }
 }

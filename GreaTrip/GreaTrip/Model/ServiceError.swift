@@ -11,14 +11,3 @@ import Foundation
 enum ServiceError: Error {
     case error
 }
-
-//extension ServiceError: LocalizedError {
-//    var errorDescription: String? {
-//        switch self {
-//        case <#pattern#>:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
-//}

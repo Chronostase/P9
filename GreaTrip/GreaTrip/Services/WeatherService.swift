@@ -18,7 +18,7 @@ class WeatherService {
         self.session = session
     }
     
-    //MARK: - Call Api
+    //MARK: - Methods
     
     func getWeather(callback: @escaping (Result <WeatherArray?, ServiceError>)  -> Void) {
         guard let request = createWeatherRequest() else {
@@ -88,7 +88,7 @@ class WeatherService {
         task.resume()
     }
     
-    //MARK: - Setup
+    //MARK: - Requests
     
     private func createImageRequest(iconName: String) -> URL? {
         let weatherConstants = Constants.Network.Weather.self

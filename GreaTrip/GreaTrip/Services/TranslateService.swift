@@ -10,13 +10,13 @@ import Foundation
 
 class TranslateService {
     
-    //MARK- Properties
+    //MARK: - Properties
     private let session: URLSession
     
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
-    //MARK- Methods
+    //MARK: - Methods
     
     func getTranslation(text: String, callback: @escaping (Result <Translation?, ServiceError>) -> Void ) {
         guard let request = createTranslateRequest(with: text) else {
@@ -44,6 +44,8 @@ class TranslateService {
         }
         task.resume()
     }
+    
+    //MARK: - Request
     
     private func createTranslateRequest(with parameter: String) -> URLRequest? {
         let translateConstants = Constants.Network.Translate.self

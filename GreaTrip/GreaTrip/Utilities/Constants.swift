@@ -19,6 +19,7 @@ enum Constants {
             static let groupParameter = "group?id=2984114,5128581&units=metric&APPID="
             static let cityNameParameter = "weather?q="
         }
+        
         enum Translate {
             static let baseUrl = URL(string: "https://translation.googleapis.com/language/translate/v2?")
             static let requestType = "POST"
@@ -27,6 +28,7 @@ enum Constants {
             static let firstParameter = "&q="
             static let parameter = "&source=fr&target=en&format=text"
         }
+        
         enum Exchange {
             static let baseUrl = "http://data.fixer.io/api/latest?access_key="
             static let fixerIo = "fixerIo"
@@ -38,19 +40,23 @@ enum Constants {
         static let errorTitle = "Error !"
         static let actionTitle = "OK"
     }
+    
     enum Cell {
         static let identifier = "Cell"
         static let nibName = "CustomTableViewCell"
     }
+    
     enum Storyboard {
         static let name = "CitiesTableView"
     }
+    
     enum Exchange {
         static let dollar = "USD"
         static let dollarSymbol = "＄"
         static let euroSymbol = " €"
         static let rateMessage = "The actual currency rate from EUR to USD is "
     }
+    
     enum Button {
         static let name = "Group"
     }

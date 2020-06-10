@@ -10,12 +10,15 @@ import Foundation
 
 class ExchangeService {
     
-    let baseUrl =  "http://data.fixer.io/api/latest?access_key="
+     //MARK: - Properties
+    
     private let session: URLSession
     
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
+    
+     //MARK: - Methods
     
     func getExchangeRates(callback: @escaping (Result <Exchange?, ServiceError>) -> Void ) {
         guard let request = createExchangeRequest() else {
@@ -49,8 +52,10 @@ class ExchangeService {
         
         return String(translatedValue)
     }
+    
+     //MARK: - Request
 
-    func createExchangeRequest() -> URLRequest? {
+    private func createExchangeRequest() -> URLRequest? {
         let exchangeConstants = Constants.Network.Exchange.self
         
         guard let key = ApiKeys.value(for: exchangeConstants.fixerIo), let url = URL(string: exchangeConstants.baseUrl +  key) else {

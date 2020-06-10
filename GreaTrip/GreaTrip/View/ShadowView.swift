@@ -14,7 +14,7 @@ class ShadowView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // Look info
-        layoutSubviews()
+        setNeedsLayout()
     }
     
     override init(frame: CGRect) {

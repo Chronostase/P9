@@ -22,9 +22,34 @@ class TranslateViewController: UIViewController {
     
     var translation: Translation?
     
+    //MARK: - Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    private func setup() {
+        setupTextView()
+        setupDoneButton()
+    }
+    
+    private func setupTextView() {
+        editableTextView.delegate = self
+        translatedTextView.delegate = self
+    }
+    
+    private func setupDoneButton() {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(tapDoneButton))
+        toolBar.setItems([flexibleSpace, doneButton], animated: false)
+        editableTextView.inputAccessoryView = toolBar
+    }
+
+    @objc private func tapDoneButton() {
+        view.endEditing(true)
     }
     
     private func getTranslation() {
@@ -43,26 +68,6 @@ class TranslateViewController: UIViewController {
         }
     }
     
-    //MARK- Setup
-    
-    private func setup() {
-        setupTextView()
-        setupDoneButton()
-    }
-    
-    private func setupDoneButton() {
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-        toolBar.sizeToFit()
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(tapDoneButton))
-        toolBar.setItems([flexibleSpace, doneButton], animated: false)
-        editableTextView.inputAccessoryView = toolBar
-    }
-
-    @objc private func tapDoneButton() {
-        view.endEditing(true)
-    }
-    
     private func updateTranslatedTextView() {
         guard let text = translation?.data.translations.first?.translatedText else {
             return
@@ -70,17 +75,5 @@ class TranslateViewController: UIViewController {
         DispatchQueue.main.async {
             self.translatedTextView.text = text
         }
-    }
-    
-    private func setupTextView() {
-        editableTextView.delegate = self
-        translatedTextView.delegate = self
-    }
-}
-
-extension TranslateViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        editableTextView.text = nil
     }
 }
