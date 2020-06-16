@@ -26,17 +26,17 @@ class WeatherService {
             return 
             // Impossible de faire le call, cause ne peut pas récupérer l'url
         }
-        getWeatherObject(request: request, callback: callback)
+        GenericsCall().getData(request: request, callback: callback)
     }
     
-    func getWeatherWithUserInteract(cityName: String, callback: @escaping (Result <Weathers?, ServiceError>)  -> Void) {
-        guard let request = createWeatherRequestWithUserInteract(parameter: cityName) else {
+    func getWeatherByName(cityName: String, callback: @escaping (Result <Weathers?, ServiceError>)  -> Void) {
+        guard let request = createWeatherRequestByName(parameter: cityName) else {
             print("something wrong happend")
             callback(.failure(.error))
             return
             // Pas d'url
         }
-        getWeatherObject(request: request, cityName: cityName, callback: callback)
+        GenericsCall().getData(request: request, text: cityName, callback: callback)
     }
     
     func getImage(named imageName: String, callback: @escaping (Result <Data?, ServiceError>) -> Void) {
@@ -45,6 +45,7 @@ class WeatherService {
             return
             // Pas d'URL
         }
+        
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data,
                 error == nil,
@@ -62,31 +63,6 @@ class WeatherService {
         task.resume()
     }
     
-    private func getWeatherObject<T: Decodable>(request: URLRequest, cityName: String? = nil, callback: @escaping (Result <T?, ServiceError>) -> Void) {
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data,
-                error == nil,
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
-                    print("something wrong happend here")
-                    callback(.failure(.error))
-                    
-                    return
-                    // Ne reçoit pas de réponse ou les datas / error
-            }
-            
-            guard let weather = try? JSONDecoder().decode(T.self, from: data) else {
-                callback(.failure(.error))
-                print("something wrong happend or here")
-                // Ne réussit pas à récupérer l'objet
-                return
-            }
-            
-            callback(.success(weather))
-        }
-        task.resume()
-    }
     
     //MARK: - Requests
     
@@ -97,7 +73,7 @@ class WeatherService {
         return imageUrl
     }
     
-    private func createWeatherRequestWithUserInteract(parameter: String) -> URLRequest? {
+    private func createWeatherRequestByName(parameter: String) -> URLRequest? {
         let weatherConstants = Constants.Network.Weather.self
         
         guard let key = ApiKeys.value(for: weatherConstants.openWeatherMapId), let url = URL(string: weatherConstants.baseUrl + weatherConstants.cityNameParameter + parameter + weatherConstants.metricParameters + key) else {
@@ -115,6 +91,7 @@ class WeatherService {
             
             return nil
         }
+        print(url)
         
         return URLRequest(url: url)
     }

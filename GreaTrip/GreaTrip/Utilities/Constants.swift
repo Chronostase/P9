@@ -36,9 +36,14 @@ enum Constants {
     }
     
     enum Error {
-        static let wifiError = "Can't get weather, please check your connection and retry"
+        static let wifiError = "Can't get data, please check your connection and retry"
         static let errorTitle = "Error !"
         static let actionTitle = "OK"
+        static let dataError = "Empty or corrupted Data"
+        static let simpleError = "An error append"
+        static let responseError = "Response isn't HTTPURLResponse type"
+        static let statusCodeError = "Status code isn't in range of 200 to 299"
+        static let decodingError = "Can't Decode Object"
     }
     
     enum Cell {

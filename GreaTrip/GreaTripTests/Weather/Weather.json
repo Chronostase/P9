@@ -1,0 +1,84 @@
+
+{
+    "cnt": 2,
+    "list": [
+        {
+            "coord": {
+                "lon": 4.03,
+                "lat": 49.25
+            },
+            "sys": {
+                "country": "FR",
+                "timezone": 7200,
+                "sunrise": 1591760325,
+                "sunset": 1591818495
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ],
+            "main": {
+                "temp": 19,
+                "feels_like": 16.94,
+                "temp_min": 19,
+                "temp_max": 19,
+                "pressure": 1013,
+                "humidity": 52
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.6,
+                "deg": 340
+            },
+            "clouds": {
+                "all": 66
+            },
+            "dt": 1591808978,
+            "id": 2984114,
+            "name": "Reims"
+        },
+        {
+            "coord": {
+                "lon": -74.01,
+                "lat": 40.71
+            },
+            "sys": {
+                "country": "US",
+                "timezone": -14400,
+                "sunrise": 1591781076,
+                "sunset": 1591835208
+            },
+            "weather": [
+                {
+                    "id": 800,
+                    "main": "Clear",
+                    "description": "clear sky",
+                    "icon": "01d"
+                }
+            ],
+            "main": {
+                "temp": 28.76,
+                "feels_like": 29.78,
+                "temp_min": 27.78,
+                "temp_max": 30,
+                "pressure": 1016,
+                "humidity": 58
+            },
+            "visibility": 16093,
+            "wind": {
+                "speed": 3.6,
+                "deg": 120
+            },
+            "clouds": {
+                "all": 1
+            },
+            "dt": 1591809331,
+            "id": 5128581,
+            "name": "New York"
+        }
+    ]
+}

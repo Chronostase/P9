@@ -25,26 +25,7 @@ class ExchangeService {
             callback(.failure(.error))
             return
         }
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data,
-                error == nil,
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
-                    
-                    callback(.failure(.error))
-                    return
-                    // Ne reçoit pas de réponse ou les datas / error
-            }
-            guard let exchangeRate = try? JSONDecoder().decode(Exchange.self, from: data) else {
-                callback(.failure(.error))
-                print("something wrong happend or here")
-                // Ne réussit pas à récupérer l'objet
-                return
-            }
-            
-            callback(.success(exchangeRate))
-        }
-        task.resume()
+        GenericsCall().getData(request: request, callback: callback)
     }
     
     func calculateTargetCurrency(_ rate: Double,_ userAmount: Double ) -> String {

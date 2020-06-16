@@ -73,7 +73,9 @@ class WeatherViewController: UIViewController {
                 
             case .failure(let error) :
                 print(error.localizedDescription)
-                self?.displayAlert(Constants.Error.wifiError)
+                DispatchQueue.main.async {
+                    self?.displayAlert(message: Constants.Error.wifiError)
+                }
                 return
             }
         }
@@ -140,12 +142,4 @@ class WeatherViewController: UIViewController {
         citiesTableViewController.delegate = self
         push(citiesTableViewController)
     }
-    
-    private func displayAlert(_ message: String) {
-        
-        let alertVC = UIAlertController(title: Constants.Error.errorTitle, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: Constants.Error.actionTitle, style: .cancel, handler: nil))
-        self.present(alertVC, animated: true, completion: nil)
-    }
-    
 }

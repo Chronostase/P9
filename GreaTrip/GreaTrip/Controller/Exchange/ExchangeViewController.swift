@@ -25,11 +25,11 @@ class ExchangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         rateLabel.isHidden = true
-        setup()
+        setupController()
         getExchangeRate()
     }
     
-    private func setup() {
+    private func setupController() {
         setupTextField()
         setupDoneButton()
     }
@@ -60,17 +60,35 @@ class ExchangeViewController: UIViewController {
                 return
             }
             let adjustedText = text.replacingOccurrences(of: ",", with: ".")
-            getExchangeRate(amount: adjustedText)
-            if adjustedText.contains(Constants.Exchange.euroSymbol) {
-                print(adjustedText)
-                view.endEditing(true)
+            if textIsConvertiBleToIntOrDouble(adjustedText) {
+                getExchangeRate(amount: adjustedText)
+                addCurrencySymbolFor(adjustedText)
             } else {
-                DispatchQueue.main.async {
-                    self.baseCurrencyTextField.text = adjustedText + Constants.Exchange.euroSymbol
-                }
+                view.endEditing(true)
+                self.displayAlert(message: "Your data are not numbers")
             }
-            view.endEditing(true)
         }
+    }
+    
+    private func textIsConvertiBleToIntOrDouble(_ text: String) -> Bool {
+        if text.isDouble || text.isInt {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func addCurrencySymbolFor(_ adjustedText: String) {
+        if adjustedText.contains(Constants.Exchange.euroSymbol) {
+            print(adjustedText)
+            view.endEditing(true)
+        } else {
+            DispatchQueue.main.async {
+                self.baseCurrencyTextField.text = adjustedText + Constants.Exchange.euroSymbol
+            }
+        }
+        view.endEditing(true)
+        
     }
     
     func getExchangeRate(amount: String = "1") {
@@ -95,6 +113,9 @@ class ExchangeViewController: UIViewController {
                 
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.displayAlert(message: Constants.Error.wifiError)
+                }
             }
         }
     }

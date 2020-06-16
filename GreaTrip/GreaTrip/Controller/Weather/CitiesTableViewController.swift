@@ -27,10 +27,10 @@ class CitiesTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupController()
     }
     
-    private func setup() {
+    private func setupController() {
         setupTableView()
         setupTapGesture()
         setupCitiesTextFieldDelegate()
@@ -75,7 +75,7 @@ class CitiesTableViewController: UIViewController {
     }
     
     func getWeather(name: String) {
-        WeatherService().getWeatherWithUserInteract(cityName: name) { [weak self] result in
+        WeatherService().getWeatherByName(cityName: name) { [weak self] result in
             switch result {
             case .success(let weather):
                 

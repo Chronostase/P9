@@ -26,10 +26,10 @@ class TranslateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupController()
     }
     
-    private func setup() {
+    private func setupController() {
         setupTextView()
         setupDoneButton()
     }
@@ -63,6 +63,9 @@ class TranslateViewController: UIViewController {
                 self?.updateTranslatedTextView()
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self?.displayAlert(message: Constants.Error.wifiError)
+                }
                 
             }
         }
