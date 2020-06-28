@@ -11,10 +11,14 @@ import UIKit
 
 extension WeatherViewController: UITableViewDataSource {
     
+    //Set number of row in Section
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return weather?.list?.count ?? 0
     }
+    
+    //Configure cell
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier, for: indexPath) as? CustomTableViewCell,
@@ -34,6 +38,9 @@ extension WeatherViewController: UITableViewDataSource {
 }
 
 extension WeatherViewController: UITableViewDelegate {
+    
+    //Set height for cell
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }

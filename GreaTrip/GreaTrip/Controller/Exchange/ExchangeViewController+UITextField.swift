@@ -26,13 +26,29 @@ extension ExchangeViewController: UITextFieldDelegate {
         textField.text = nil
     }
     
+    //Allow to have only one dote or commas in textfield
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = baseCurrencyTextField.text {
-            let countDots = text.components(separatedBy: ",").count - 1
-            if countDots > 0 && string == "," {
+        let isContainingDots = baseCurrencyTextField.text?.contains(".")
+        let isContainingCommas = baseCurrencyTextField.text?.contains(",")
+        
+
+        if isContainingDots == true && isContainingCommas == true {
+            baseCurrencyTextField.text?.removeLast()
+            return true
+        }
+        
+        if isContainingDots == true || isContainingCommas == true {
+            guard let text = baseCurrencyTextField.text else {
+                return true
+            }
+            let containedCharacter = isContainingDots == true ? "." : ","
+            let characterCount = text.components(separatedBy: containedCharacter).count - 1
+            if characterCount > 0 && string == containedCharacter {
                 return false
             }
         }
+        
         return true
     }
 }

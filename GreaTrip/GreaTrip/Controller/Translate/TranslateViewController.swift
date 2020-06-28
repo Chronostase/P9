@@ -12,9 +12,6 @@ import UIKit
 class TranslateViewController: UIViewController {
     
     //MARK- Properties
-    @IBAction func translateButton(_ sender: UIButton) {
-        getTranslation()
-    }
     
     @IBOutlet weak var editableTextView: UITextView!
     @IBOutlet weak var translatedTextView: UITextView!
@@ -23,6 +20,10 @@ class TranslateViewController: UIViewController {
     var translation: Translation?
     
     //MARK: - Methods
+    
+    @IBAction func translateButton(_ sender: UIButton) {
+        getTranslation()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,14 @@ class TranslateViewController: UIViewController {
         setupDoneButton()
     }
     
+    //Set delegate to both textView 
+    
     private func setupTextView() {
         editableTextView.delegate = self
         translatedTextView.delegate = self
     }
+    
+    //Add Done button in right side of keyboard toolbar
     
     private func setupDoneButton() {
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
@@ -52,8 +57,11 @@ class TranslateViewController: UIViewController {
         view.endEditing(true)
     }
     
+    // Allow to translate text
+    
     private func getTranslation() {
-        TranslateService().getTranslation(text: editableTextView.text)  { [weak self] result in
+        showIndicator()
+        TranslateService(baseUrl: Constants.Network.Translate.baseUrl).getTranslation(text: editableTextView.text)  { [weak self] result in
             switch result {
             case .success(let text):
                 guard let translatedText = text else {
@@ -62,14 +70,16 @@ class TranslateViewController: UIViewController {
                 self?.translation = translatedText
                 self?.updateTranslatedTextView()
             case .failure(let error):
-                print(error.localizedDescription)
+                print("getTranslatrion: \(error.localizedDescription)")
                 DispatchQueue.main.async {
-                    self?.displayAlert(message: Constants.Error.wifiError)
+                    self?.displayAlert(message: Constants.Error.networkError)
                 }
-                
             }
         }
+        hideIndicator()
     }
+    
+    //Asign translated text to translatedTextView
     
     private func updateTranslatedTextView() {
         guard let text = translation?.data.translations.first?.translatedText else {

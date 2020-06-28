@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WeatherFakeResponseData {
     
@@ -16,12 +17,21 @@ class WeatherFakeResponseData {
         let data = try! Data(contentsOf: url!)
         return data
     }
+    var weatherByNameCorrectData: Data {
+        let bundle = Bundle(for: WeatherFakeResponseData.self)
+        let url = bundle.url(forResource: "WeatherByName", withExtension: "json")
+        let data = try! Data(contentsOf: url!)
+        return data
+    }
+    
     let weatherIncorrectData = "Error".data(using: .utf8)
-    let weatherImageData = "Image".data(using: .utf8)
+    let imageCorrectData = UIImage(named: "France")?.pngData()
     
     let responseOk = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
     let responseKo = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)
+    let responseNotHTTP = URLResponse(url: URL(string: "https://openclassrooms.com")!, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
     
     class WeatherError: Error {}
     let error = WeatherError()
+    
 }

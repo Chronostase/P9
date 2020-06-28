@@ -12,10 +12,16 @@ class TranslateService {
     
     //MARK: - Properties
     private let session: URLSession
+    private let defaultService: DefaultService?
+    private let baseUrl: URL?
     
-    init(session: URLSession = URLSession(configuration: .default)) {
+    init(session: URLSession = URLSession(configuration: .default), baseUrl: URL? = nil) {
         self.session = session
+        defaultService = DefaultService(session: session)
+        self.baseUrl = baseUrl
     }
+    
+    
     //MARK: - Methods
     
     func getTranslation(text: String, callback: @escaping (Result <Translation?, ServiceError>) -> Void ) {
@@ -23,7 +29,7 @@ class TranslateService {
             callback(.failure(.error))
             return
         }
-        GenericsCall().getData(request: request, text: text, callback: callback)
+        defaultService?.getDecodedData(request: request, text: text, callback: callback)
     }
     
     //MARK: - Request
@@ -31,7 +37,7 @@ class TranslateService {
     private func createTranslateRequest(with parameter: String) -> URLRequest? {
         let translateConstants = Constants.Network.Translate.self
         
-        guard let url = translateConstants.baseUrl else {
+        guard let url = baseUrl else {
             return nil
         }
         

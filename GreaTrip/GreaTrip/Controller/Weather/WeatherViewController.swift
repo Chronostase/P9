@@ -19,7 +19,6 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
         getWeather()
     }
@@ -32,6 +31,8 @@ class WeatherViewController: UIViewController {
         setupNavigationBarButton()
     }
     
+    // Reuse cell from xibFiles
+    
     private func setupCustomCell() {
         let nib = UINib(nibName: Constants.Cell.nibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Constants.Cell.identifier)
@@ -40,6 +41,8 @@ class WeatherViewController: UIViewController {
     private func setTableViewDataSource() {
         tableView.dataSource = self
     }
+    
+    //Setup "plus" button to navigation bar
     
     private func setupNavigationBarButton() {
         let button = UIButton(type: .custom)
@@ -57,7 +60,8 @@ class WeatherViewController: UIViewController {
     }
     
     private func getWeather() {
-        WeatherService().getWeather { [weak self] result in
+        showIndicator()
+        WeatherService(baseUrl: Constants.Network.Weather.baseUrl).getWeather { [weak self] result in
             switch result {
                 
             case .success(let weather) :
@@ -72,13 +76,14 @@ class WeatherViewController: UIViewController {
                 }
                 
             case .failure(let error) :
-                print(error.localizedDescription)
+                print("getWeather : \(error.localizedDescription)")
                 DispatchQueue.main.async {
-                    self?.displayAlert(message: Constants.Error.wifiError)
+                    self?.displayAlert(message: Constants.Error.networkError)
                 }
                 return
             }
         }
+        hideIndicator()
     }
     
     private func getImage(atIndex index: Int = 0) {
@@ -89,7 +94,7 @@ class WeatherViewController: UIViewController {
             return
             //Ne peut pas recevoir les noms d'images
         }
-        
+        showIndicator()
         WeatherService().getImage(named: nameArray[index] ?? "") { [weak self] result in
             self?.requests?[index] = .finished
             switch result {
@@ -105,16 +110,19 @@ class WeatherViewController: UIViewController {
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                print("getImage: \(error.localizedDescription)")
                 self?.requests?[index] = .failed
                 // Doit relancer la requête fail, attention boucle infinie
                 self?.getImage(atIndex: index)
             }
         }
+        hideIndicator()
     }
     
     
     //MARK: - Setup
+    
+    //Check if all image are fetched
     
     private func isAllImageFetched() -> Bool {
         return requests?.filter { $0 == .finished }.count == requests?.count

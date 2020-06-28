@@ -20,4 +20,11 @@ extension String {
         return Double(self) != nil
     }
     
+    var formattedToRequest: String {
+        let charactersNeedModifications = [" ": "%20", ".": ""]
+        var formattedText = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        charactersNeedModifications.forEach { formattedText = formattedText.replacingOccurrences(of: $0.key, with: $0.value) }
+        return formattedText
+    }
+    
 }

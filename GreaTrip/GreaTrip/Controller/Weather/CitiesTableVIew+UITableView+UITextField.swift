@@ -11,9 +11,14 @@ import UIKit
 
 extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate {
     
+    //Set height for cell
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    //Set the number of rows in section
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if weather == nil {
             return 0
@@ -21,6 +26,8 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
             return [weather].count
         }
     }
+    
+    //Configure cell
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier, for: indexPath) as? CustomTableViewCell,
@@ -33,6 +40,8 @@ extension CitiesTableViewController: UITableViewDataSource, UITableViewDelegate 
         
         return cell
     }
+    
+    //Configure action when user select a cell
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.sendData(city: weather)
@@ -55,10 +64,10 @@ extension CitiesTableViewController: UITextFieldDelegate {
         guard let text = textField.text else {
             return true
         }
-        let adjutedText = text.replacingOccurrences(of: " ", with: "%20")
-        getWeather(name: adjutedText)
         
-        print(text)
+        textField.text = text.formattedToRequest
+        getWeatherByName(name: text.formattedToRequest)
+        
         textField.resignFirstResponder()
         tapGestureRecognizer?.isEnabled = false
         

@@ -36,6 +36,8 @@ class CitiesTableViewController: UIViewController {
         setupCitiesTextFieldDelegate()
     }
     
+    //Setup table View and Reuse cell from Xib
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -69,13 +71,13 @@ class CitiesTableViewController: UIViewController {
                     return self?.tableView.reloadData()
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                print("getWeatherImage: \(error.localizedDescription)")
             }
         }
     }
     
-    func getWeather(name: String) {
-        WeatherService().getWeatherByName(cityName: name) { [weak self] result in
+    func getWeatherByName(name: String) {
+        WeatherService(baseUrl: Constants.Network.Weather.baseUrl).getWeatherByName(cityName: name) { [weak self] result in
             switch result {
             case .success(let weather):
                 
@@ -99,7 +101,7 @@ class CitiesTableViewController: UIViewController {
                     self?.resultLabel.isHidden = false
                     self?.tableView.reloadData()
                 }
-                print(error.localizedDescription)
+                print("Cities getWeather: \(error.localizedDescription)")
             }
         }
     }

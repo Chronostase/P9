@@ -11,6 +11,8 @@ import UIKit
 
 extension TranslateViewController: UITextViewDelegate {
     
+    //Allow to clean editableTextView when user begin editing 
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         editableTextView.text = nil
     }

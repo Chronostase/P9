@@ -1,0 +1,44 @@
+
+{
+    "coord": {
+        "lon": 4.58,
+        "lat": 45.75
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 27.79,
+        "feels_like": 25.81,
+        "temp_min": 25,
+        "temp_max": 30,
+        "pressure": 1018,
+        "humidity": 37
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 3.6,
+        "deg": 350
+    },
+    "clouds": {
+        "all": 0
+    },
+    "dt": 1592929870,
+    "sys": {
+        "type": 1,
+        "id": 6505,
+        "country": "FR",
+        "sunrise": 1592884348,
+        "sunset": 1592940921
+    },
+    "timezone": 7200,
+    "id": 2996943,
+    "name": "Arrondissement de Lyon",
+    "cod": 200
+}

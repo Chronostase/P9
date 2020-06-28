@@ -16,6 +16,8 @@ class ExchangeViewController: UIViewController {
     
     //MARK: - Methods
     
+    //Allow to clean both textField and refresh ExchangeRate
+    
     @IBAction func refreshButton(_ sender: UIBarButtonItem) {
         self.baseCurrencyTextField.text = ""
         getExchangeRate()
@@ -34,10 +36,14 @@ class ExchangeViewController: UIViewController {
         setupDoneButton()
     }
     
+    // Set delegate to both TextField
+    
     private func setupTextField() {
         baseCurrencyTextField.delegate = self
         targetCurrencyTextField.delegate = self
     }
+    
+    //Set done button to right side of keyboard toolbar
     
     private func setupDoneButton() {
         let toolBar =  UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
@@ -47,6 +53,8 @@ class ExchangeViewController: UIViewController {
         toolBar.setItems([flexibleSpace, doneButton], animated: false)
         baseCurrencyTextField.inputAccessoryView = toolBar
     }
+    
+    //Allow to check if user entry is correct and add currencySymbol
 
     @objc private func tapDoneButton() {
         if baseCurrencyTextField.text == "" {
@@ -65,8 +73,12 @@ class ExchangeViewController: UIViewController {
                 addCurrencySymbolFor(adjustedText)
             } else {
                 view.endEditing(true)
-                self.displayAlert(message: "Your data are not numbers")
+                self.displayAlert(message: Constants.Error.userEntryError)
             }
+        }
+        
+        if baseCurrencyTextField.text?.last == "." || baseCurrencyTextField.text?.last == "," {
+            baseCurrencyTextField.text?.removeLast()
         }
     }
     
@@ -92,7 +104,8 @@ class ExchangeViewController: UIViewController {
     }
     
     func getExchangeRate(amount: String = "1") {
-        ExchangeService().getExchangeRates() { result in
+        showIndicator()
+        ExchangeService(baseUrl: Constants.Network.Exchange.baseUrl).getExchangeRates() { result in
             switch result {
             case .success(let exchange):
                 guard let exchangeRate = exchange else {
@@ -112,12 +125,13 @@ class ExchangeViewController: UIViewController {
                 print(amount)
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                print("getExchangeRate: \(error.localizedDescription)")
                 DispatchQueue.main.async {
-                    self.displayAlert(message: Constants.Error.wifiError)
+                    self.displayAlert(message: Constants.Error.networkError)
                 }
             }
         }
+        hideIndicator()
     }
     
     private func showRateLabel(_ rate: Double) {

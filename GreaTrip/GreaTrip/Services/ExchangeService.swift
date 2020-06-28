@@ -13,9 +13,13 @@ class ExchangeService {
      //MARK: - Properties
     
     private let session: URLSession
+    private let defaultService: DefaultService?
+    private let baseUrl: String?
     
-    init(session: URLSession = URLSession(configuration: .default)) {
+    init(session: URLSession = URLSession(configuration: .default), baseUrl: String? = nil) {
         self.session = session
+        defaultService = DefaultService(session: session)
+        self.baseUrl = baseUrl
     }
     
      //MARK: - Methods
@@ -25,7 +29,7 @@ class ExchangeService {
             callback(.failure(.error))
             return
         }
-        GenericsCall().getData(request: request, callback: callback)
+        defaultService?.getDecodedData(request: request, callback: callback)
     }
     
     func calculateTargetCurrency(_ rate: Double,_ userAmount: Double ) -> String {
@@ -39,7 +43,7 @@ class ExchangeService {
     private func createExchangeRequest() -> URLRequest? {
         let exchangeConstants = Constants.Network.Exchange.self
         
-        guard let key = ApiKeys.value(for: exchangeConstants.fixerIo), let url = URL(string: exchangeConstants.baseUrl +  key) else {
+        guard let key = ApiKeys.value(for: exchangeConstants.fixerIo), let baseUrl = baseUrl, let url = URL(string: baseUrl +  key) else {
             // ne peut pas construire l'url
             return nil
         }

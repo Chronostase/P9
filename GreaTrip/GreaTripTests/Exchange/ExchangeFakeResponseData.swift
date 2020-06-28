@@ -16,10 +16,10 @@ class ExchangeFakeResponseData {
         return data
     }
     let exchangeIncorrectData = "Error".data(using: .utf8)
-    let exchangeImageData = "Image".data(using: .utf8)
     
     let responseOk = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
     let responseKo = HTTPURLResponse(url: URL(string: "https://openclassrooms.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)
+    let responseNotHTTP = URLResponse(url: URL(string: "https://openclassrooms.com")!, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
     
     class ExchangeError: Error {}
     let error = ExchangeError()
