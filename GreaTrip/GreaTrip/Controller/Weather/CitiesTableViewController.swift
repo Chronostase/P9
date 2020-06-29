@@ -63,6 +63,7 @@ class CitiesTableViewController: UIViewController {
         guard let iconName = weather?.weather.first?.icon else {
             return
         }
+        showIndicator()
         WeatherService().getImage(named: iconName) { [weak self] result in
             switch result {
             case .success(let image):
@@ -74,9 +75,11 @@ class CitiesTableViewController: UIViewController {
                 print("getWeatherImage: \(error.localizedDescription)")
             }
         }
+        hideIndicator()
     }
     
     func getWeatherByName(name: String) {
+        showIndicator()
         WeatherService(baseUrl: Constants.Network.Weather.baseUrl).getWeatherByName(cityName: name) { [weak self] result in
             switch result {
             case .success(let weather):
@@ -104,6 +107,7 @@ class CitiesTableViewController: UIViewController {
                 print("Cities getWeather: \(error.localizedDescription)")
             }
         }
+        hideIndicator()
     }
     
     @objc private func handleTapGesture() {

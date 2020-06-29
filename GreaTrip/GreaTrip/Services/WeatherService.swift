@@ -25,6 +25,8 @@ class WeatherService {
     
     //MARK: - Methods
     
+    //Allow to get weather
+    
     func getWeather(callback: @escaping (Result <WeatherArray?, ServiceError>) -> Void) {
         guard let request = createWeatherRequest() else {
             callback(.failure(.requestError))
@@ -33,6 +35,8 @@ class WeatherService {
         defaultService?.getDecodedData(request: request, callback: callback)
     }
     
+    //Allow to get weather when user type cityName
+    
     func getWeatherByName(cityName: String, callback: @escaping (Result <Weathers?, ServiceError>)  -> Void) {
         guard let request = createWeatherRequestByName(parameter: cityName) else {
             callback(.failure(.requestError))
@@ -40,6 +44,8 @@ class WeatherService {
         }
         defaultService?.getDecodedData(request: request, text: cityName, callback: callback)
     }
+    
+    //Allow to get image
     
     func getImage(named imageName: String, callback: @escaping (Result <Data?, ServiceError>) -> Void) {
         guard let request = createImageRequest(iconName: imageName) else {

@@ -16,6 +16,8 @@ class DefaultService {
         self.session = session
     }
     
+    //Allow to have generics call method
+    
     func getDecodedData<T: Decodable>(request: URLRequest, text: String? = nil, callback: @escaping (Result <T?, ServiceError>) -> Void) {
         let task = session.dataTask(with: request) { (data, response, error) in
             
@@ -47,6 +49,8 @@ class DefaultService {
         }
         task.resume()
     }
+    
+    //Call to get image 
     
     func getImage(request: URL, callback: @escaping (Result <Data?, ServiceError>) -> Void) {
         

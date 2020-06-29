@@ -26,11 +26,15 @@ class CustomTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    //Configure cell with all properties
+    
     func configureAllCell(name: String, temperature: Int, image: Data) {
         temperatureLabel.text = "\(String(temperature))°"
         cityName.text = name
         weatherIcon.image = UIImage(data: image)
     }
+    
+    //Configure cell with only name
     
     func configureJustTitle(name: String) {
         cityName.text = name 

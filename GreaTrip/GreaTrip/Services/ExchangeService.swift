@@ -24,6 +24,8 @@ class ExchangeService {
     
      //MARK: - Methods
     
+    //Allow to get exchange rates
+    
     func getExchangeRates(callback: @escaping (Result <Exchange?, ServiceError>) -> Void ) {
         guard let request = createExchangeRequest() else {
             callback(.failure(.error))
@@ -31,6 +33,8 @@ class ExchangeService {
         }
         defaultService?.getDecodedData(request: request, callback: callback)
     }
+    
+    //Calculate amount of currency with currency rates
     
     func calculateTargetCurrency(_ rate: Double,_ userAmount: Double ) -> String {
         let translatedValue = userAmount * rate

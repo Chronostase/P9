@@ -24,6 +24,8 @@ class TranslateService {
     
     //MARK: - Methods
     
+    //Allow to get translation
+    
     func getTranslation(text: String, callback: @escaping (Result <Translation?, ServiceError>) -> Void ) {
         guard let request = createTranslateRequest(with: text) else {
             callback(.failure(.error))

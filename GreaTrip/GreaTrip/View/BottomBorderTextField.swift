@@ -12,13 +12,14 @@ class BottomBorderTextField: UITextField {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         setNeedsLayout()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
+    
+    //Set aspect of UIElement
     
     override func layoutSubviews() {
         super.layoutSubviews()

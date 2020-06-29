@@ -92,7 +92,6 @@ class WeatherViewController: UIViewController {
         
         guard let nameArray = self.weather?.list?.map({ $0.weather.first?.icon }) else {
             return
-            //Ne peut pas recevoir les noms d'images
         }
         showIndicator()
         WeatherService().getImage(named: nameArray[index] ?? "") { [weak self] result in
@@ -112,7 +111,6 @@ class WeatherViewController: UIViewController {
             case .failure(let error):
                 print("getImage: \(error.localizedDescription)")
                 self?.requests?[index] = .failed
-                // Doit relancer la requête fail, attention boucle infinie
                 self?.getImage(atIndex: index)
             }
         }
@@ -131,7 +129,6 @@ class WeatherViewController: UIViewController {
     private func fillRequestsQueue() {
         guard let weatherArray = self.weather?.list else {
             return
-            // Ne peut pas récupérer la list des temps
         }
         for _ in weatherArray {
             if requests == nil {

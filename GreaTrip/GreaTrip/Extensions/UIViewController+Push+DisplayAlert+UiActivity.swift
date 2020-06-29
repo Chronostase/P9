@@ -9,10 +9,13 @@ import UIKit
 
 extension UIViewController {
 
+    //Allow to push a viewController
     
     func push(_ viewController: UIViewController, animated: Bool = true) {
         navigationController?.pushViewController(viewController, animated: animated)
     }
+    
+    //Display any alert with personalized message
     
     func displayAlert(message: String, title: String = "") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

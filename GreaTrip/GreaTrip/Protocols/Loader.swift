@@ -13,7 +13,9 @@ protocol UILoader {}
 
 extension UILoader where Self: UIViewController {
     
-    func showLoader(withStryle style: UIActivityIndicatorView.Style) {
+    //Create and animating loader
+    
+    fileprivate func showLoader(withStryle style: UIActivityIndicatorView.Style) {
         DispatchQueue.main.async {
             let loader = UIActivityIndicatorView(style: style)
             loader.center = self.view.center
@@ -23,7 +25,9 @@ extension UILoader where Self: UIViewController {
         }
     }
     
-    func hideLoader() {
+    //Hide and stop animating loader
+    
+    fileprivate func hideLoader() {
         DispatchQueue.main.async {
             self.view.subviews.forEach {
                 guard let activityIndicator = $0 as? UIActivityIndicatorView else {

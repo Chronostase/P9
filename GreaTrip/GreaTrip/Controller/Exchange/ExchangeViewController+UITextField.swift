@@ -32,12 +32,6 @@ extension ExchangeViewController: UITextFieldDelegate {
         let isContainingDots = baseCurrencyTextField.text?.contains(".")
         let isContainingCommas = baseCurrencyTextField.text?.contains(",")
         
-
-        if isContainingDots == true && isContainingCommas == true {
-            baseCurrencyTextField.text?.removeLast()
-            return true
-        }
-        
         if isContainingDots == true || isContainingCommas == true {
             guard let text = baseCurrencyTextField.text else {
                 return true

@@ -31,10 +31,6 @@ extension WeatherViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("enter in did select")
-    }
 }
 
 extension WeatherViewController: UITableViewDelegate {

@@ -54,7 +54,7 @@ class ExchangeViewController: UIViewController {
         baseCurrencyTextField.inputAccessoryView = toolBar
     }
     
-    //Allow to check if user entry is correct and add currencySymbol
+    //Allow to check if user entry is correct and add currencySymbol, and get currency rate
 
     @objc private func tapDoneButton() {
         if baseCurrencyTextField.text == "" {
@@ -68,7 +68,7 @@ class ExchangeViewController: UIViewController {
                 return
             }
             let adjustedText = text.replacingOccurrences(of: ",", with: ".")
-            if textIsConvertiBleToIntOrDouble(adjustedText) {
+            if adjustedText.isConvertiBleToIntOrDouble() {
                 getExchangeRate(amount: adjustedText)
                 addCurrencySymbolFor(adjustedText)
             } else {
@@ -76,23 +76,10 @@ class ExchangeViewController: UIViewController {
                 self.displayAlert(message: Constants.Error.userEntryError)
             }
         }
-        
-        if baseCurrencyTextField.text?.last == "." || baseCurrencyTextField.text?.last == "," {
-            baseCurrencyTextField.text?.removeLast()
-        }
-    }
-    
-    private func textIsConvertiBleToIntOrDouble(_ text: String) -> Bool {
-        if text.isDouble || text.isInt {
-            return true
-        } else {
-            return false
-        }
     }
     
     private func addCurrencySymbolFor(_ adjustedText: String) {
         if adjustedText.contains(Constants.Exchange.euroSymbol) {
-            print(adjustedText)
             view.endEditing(true)
         } else {
             DispatchQueue.main.async {
@@ -102,6 +89,8 @@ class ExchangeViewController: UIViewController {
         view.endEditing(true)
         
     }
+    
+    //Allow to have exchange rate
     
     func getExchangeRate(amount: String = "1") {
         showIndicator()
@@ -122,7 +111,6 @@ class ExchangeViewController: UIViewController {
                     }
                 }
                 self.showRateLabel(rate)
-                print(amount)
                 
             case .failure(let error):
                 print("getExchangeRate: \(error.localizedDescription)")

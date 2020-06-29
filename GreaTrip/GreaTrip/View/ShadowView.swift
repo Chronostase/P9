@@ -13,13 +13,14 @@ class ShadowView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        // Look info
         setNeedsLayout()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
+    
+    //Set aspect of UIElement
     
     override func layoutSubviews() {
         super.layoutSubviews()

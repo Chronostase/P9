@@ -12,13 +12,14 @@ class ShadowTextView: UITextView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        // Look info
         setNeedsLayout()
     }
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
     }
+    
+    //Set aspect of UIElement
     
     override func layoutSubviews() {
         super.layoutSubviews()

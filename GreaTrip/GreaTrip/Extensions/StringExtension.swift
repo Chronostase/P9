@@ -20,11 +20,23 @@ extension String {
         return Double(self) != nil
     }
     
+    //Format text to request convention
+    
     var formattedToRequest: String {
         let charactersNeedModifications = [" ": "%20", ".": ""]
         var formattedText = self.trimmingCharacters(in: .whitespacesAndNewlines)
         charactersNeedModifications.forEach { formattedText = formattedText.replacingOccurrences(of: $0.key, with: $0.value) }
         return formattedText
+    }
+    
+    //Check if a string is convertible to Int or Double
+    
+    func isConvertiBleToIntOrDouble() -> Bool {
+        if self.isDouble || self.isInt {
+            return true
+        } else {
+            return false
+        }
     }
     
 }
