@@ -64,7 +64,7 @@ class CitiesTableViewController: UIViewController {
             return
         }
         showIndicator()
-        WeatherService().getImage(named: iconName) { [weak self] result in
+        WeatherService(imageURL: Constants.Network.Weather.imageUrl).getImage(named: iconName) { [weak self] result in
             switch result {
             case .success(let image):
                 self?.weather?.imageData = image

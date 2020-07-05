@@ -27,7 +27,6 @@ extension ServiceError: LocalizedError {
             return "\(Constants.Error.statusCodeError) status code: \(statusCode)"
         case .badResponse:
             return Constants.Error.responseError
-            
         case .dataError:
             return Constants.Error.dataError
         case .decodingError:

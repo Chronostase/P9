@@ -15,7 +15,7 @@ class TranslateServiceTest: XCTestCase {
     
     func testGetTranslateShouldGetFailedCallbackIfError() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: translateFakeResponseData.error ), baseUrl: Constants.Network.Translate.baseUrl)
+        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: translateFakeResponseData.error ), baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -25,6 +25,7 @@ class TranslateServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.simpleError)
             }
             self.expectation.fulfill()
         }
@@ -35,7 +36,7 @@ class TranslateServiceTest: XCTestCase {
     
     func testGetTranslateShouldGetFailedCallbackIfResponseIsNotHTTP() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateCorrectData, response: translateFakeResponseData.responseNotHTTP, error: nil), baseUrl: Constants.Network.Translate.baseUrl)
+        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateCorrectData, response: translateFakeResponseData.responseNotHTTP, error: nil), baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -45,6 +46,7 @@ class TranslateServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.responseError)
             }
             self.expectation.fulfill()
         }
@@ -53,9 +55,9 @@ class TranslateServiceTest: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetTranslateShouldGetFailedCallbackIfBadResponse() {
+    func testGetTranslateShouldGetFailedCallbackIfInvalidStatusCode() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateCorrectData, response: translateFakeResponseData.responseKo, error: nil), baseUrl: Constants.Network.Translate.baseUrl)
+        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateCorrectData, response: translateFakeResponseData.responseKo, error: nil), baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -65,6 +67,7 @@ class TranslateServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, "Status code isn't in range of 200 to 299 status code: 500")
             }
             self.expectation.fulfill()
         }
@@ -73,9 +76,9 @@ class TranslateServiceTest: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetTranslateShouldGetFailedCallbackIfIncorrectData() {
+    func testGetTranslateShouldGetFailedCallbackIfDecodingError() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateIncorrectData, response: translateFakeResponseData.responseOk, error: nil), baseUrl: Constants.Network.Translate.baseUrl)
+        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateIncorrectData, response: translateFakeResponseData.responseOk, error: nil), baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -85,6 +88,7 @@ class TranslateServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.decodingError)
             }
             self.expectation.fulfill()
         }
@@ -95,7 +99,7 @@ class TranslateServiceTest: XCTestCase {
     
     func testGetTranslateShouldGetFailedCallbackIfNoErrorNoData() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: nil), baseUrl: Constants.Network.Translate.baseUrl)
+        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: nil), baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -105,6 +109,7 @@ class TranslateServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.responseError)
             }
             self.expectation.fulfill()
         }
@@ -115,7 +120,7 @@ class TranslateServiceTest: XCTestCase {
     
     func testGetTranslateShouldGetSuccedCallbackIfNoErrorCorrectData() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateCorrectData, response: translateFakeResponseData.responseOk, error: nil), baseUrl: Constants.Network.Translate.baseUrl)
+        let translateService = TranslateService(session: UrlSessionFake(data: translateFakeResponseData.translateCorrectData, response: translateFakeResponseData.responseOk, error: nil), baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -137,7 +142,7 @@ class TranslateServiceTest: XCTestCase {
     
     func testGetTranslateShouldGetFailedCallbackIfBadRequest() {
         // Given
-        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: nil))
+        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: nil), cloudTranslater: Constants.Network.Translate.cloudTranslater)
         
         //When
         translateService.getTranslation(text: "Bonjour") { result in
@@ -147,6 +152,28 @@ class TranslateServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.requestError)
+            }
+            self.expectation.fulfill()
+        }
+        
+        //Then
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetTranslateShouldGetFailedCallbackIfBadApIKey() {
+        // Given
+        let translateService = TranslateService(session: UrlSessionFake(data: nil, response: nil, error: nil), baseUrl: Constants.Network.Translate.baseUrl)
+        
+        //When
+        translateService.getTranslation(text: "Bonjour") { result in
+            switch result {
+            case .success(let translate):
+                XCTAssertNil(translate)
+                
+            case .failure(let error) :
+                XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.requestError)
             }
             self.expectation.fulfill()
         }

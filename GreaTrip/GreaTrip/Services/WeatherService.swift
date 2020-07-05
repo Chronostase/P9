@@ -15,12 +15,14 @@ class WeatherService {
     private let session: URLSession
     private let defaultService: DefaultService?
     private let baseUrl: String?
+    private let imageURL: String?
     
     
-    init(session: URLSession = URLSession(configuration: .default), baseUrl: String? = nil) {
+    init(session: URLSession = URLSession(configuration: .default), baseUrl: String? = nil, imageURL: String? = nil) {
         self.session = session
         defaultService = DefaultService(session: session)
         self.baseUrl = baseUrl
+        self.imageURL = imageURL
     }
     
     //MARK: - Methods
@@ -60,7 +62,9 @@ class WeatherService {
     
     private func createImageRequest(iconName: String) -> URL? {
         let weatherConstants = Constants.Network.Weather.self
-        let imageUrl = URL(string: weatherConstants.imageUrl + "\(iconName)" + weatherConstants.imageSize)
+        guard let imageURL = imageURL, let imageUrl = URL(string: imageURL + "\(iconName)" + weatherConstants.imageSize) else {
+            return nil 
+        }
         return imageUrl
     }
     

@@ -61,7 +61,7 @@ class TranslateViewController: UIViewController {
     
     private func getTranslation() {
         showIndicator()
-        TranslateService(baseUrl: Constants.Network.Translate.baseUrl).getTranslation(text: editableTextView.text)  { [weak self] result in
+        TranslateService(baseUrl: Constants.Network.Translate.baseUrl, cloudTranslater: Constants.Network.Translate.cloudTranslater).getTranslation(text: editableTextView.text)  { [weak self] result in
             switch result {
             case .success(let text):
                 guard let translatedText = text else {

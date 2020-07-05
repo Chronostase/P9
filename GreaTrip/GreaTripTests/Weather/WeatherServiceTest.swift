@@ -27,6 +27,7 @@ class WeatherServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.simpleError)
             }
             self.expectation.fulfill()
         }
@@ -45,6 +46,7 @@ class WeatherServiceTest: XCTestCase {
 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.responseError)
             }
             self.expectation.fulfill()
         }
@@ -64,6 +66,7 @@ class WeatherServiceTest: XCTestCase {
 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.responseError)
             }
             self.expectation.fulfill()
         }
@@ -84,6 +87,7 @@ class WeatherServiceTest: XCTestCase {
 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, "Status code isn't in range of 200 to 299 status code: 500" )
             }
             self.expectation.fulfill()
         }
@@ -104,6 +108,7 @@ class WeatherServiceTest: XCTestCase {
 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.decodingError)
             }
             self.expectation.fulfill()
         }
@@ -124,6 +129,7 @@ class WeatherServiceTest: XCTestCase {
 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.dataError)
             }
             self.expectation.fulfill()
         }
@@ -171,6 +177,7 @@ class WeatherServiceTest: XCTestCase {
 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.requestError)
             }
             self.expectation.fulfill()
         }
@@ -390,7 +397,7 @@ class WeatherServiceTest: XCTestCase {
     
     func testGetImageShouldGetFailedCallbackIfError() {
         // Given
-        let weatherService = WeatherService(session: UrlSessionFake(data: nil, response: nil, error: weatherFakeResponseData.error))
+        let weatherService = WeatherService(session: UrlSessionFake(data: nil, response: nil, error: weatherFakeResponseData.error), imageURL: Constants.Network.Weather.imageUrl)
         
         //When
         weatherService.getImage(named: "image") { result in
@@ -410,7 +417,7 @@ class WeatherServiceTest: XCTestCase {
     
     func testGetImageShouldGetFailedCallbackIfNoResponse() {
         // Given
-        let weatherService = WeatherService(session: UrlSessionFake(data: nil, response: nil, error: nil))
+        let weatherService = WeatherService(session: UrlSessionFake(data: nil, response: nil, error: nil), imageURL: Constants.Network.Weather.imageUrl)
         
         //When
         weatherService.getImage(named: "image") { result in
@@ -430,7 +437,7 @@ class WeatherServiceTest: XCTestCase {
     
     func testGetImageShouldGetFailedCallbackIfIncorrectResponse() {
         // Given
-        let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.weatherCorrectData, response: weatherFakeResponseData.responseNotHTTP, error: nil))
+        let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.weatherCorrectData, response: weatherFakeResponseData.responseNotHTTP, error: nil), imageURL: Constants.Network.Weather.imageUrl)
         
         //When
         weatherService.getImage(named: "image") { result in
@@ -450,7 +457,7 @@ class WeatherServiceTest: XCTestCase {
     
     func testGetImageShouldGetFailedCallbackIfResponseKo() {
         // Given
-        let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.weatherCorrectData, response: weatherFakeResponseData.responseKo, error: nil))
+        let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.weatherCorrectData, response: weatherFakeResponseData.responseKo, error: nil), imageURL: Constants.Network.Weather.imageUrl)
         
         //When
         weatherService.getImage(named: "image") { result in
@@ -470,7 +477,7 @@ class WeatherServiceTest: XCTestCase {
     
     func testGetImageShouldGetFailedCallbackIfEmptyData() {
         // Given
-        let weatherService = WeatherService(session: UrlSessionFake(data: nil, response: weatherFakeResponseData.responseOk, error: nil))
+        let weatherService = WeatherService(session: UrlSessionFake(data: nil, response: weatherFakeResponseData.responseOk, error: nil), imageURL: Constants.Network.Weather.imageUrl)
         
         //When
         weatherService.getImage(named: "image") { result in
@@ -490,7 +497,7 @@ class WeatherServiceTest: XCTestCase {
     
     func testGetImageShouldSuccessCallbackNoErrorCorrectData() {
         // Given
-        let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.imageCorrectData, response: weatherFakeResponseData.responseOk, error: nil))
+        let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.imageCorrectData, response: weatherFakeResponseData.responseOk, error: nil), imageURL: Constants.Network.Weather.imageUrl)
         
         //When
         weatherService.getImage(named: "image") { result in
@@ -499,9 +506,6 @@ class WeatherServiceTest: XCTestCase {
                 guard let image = image else {
                     return
                 }
-//                guard let icon = UIImage(data: image) else {
-//                    return
-//                }
                 XCTAssertNotNil(UIImage(data: image))
             case .failure(let error) :
                 XCTAssertNil(error)
@@ -512,4 +516,26 @@ class WeatherServiceTest: XCTestCase {
         //Then
         wait(for: [expectation], timeout: 0.01)
     }
+    
+    func testGetImageShouldFailedCallbackIfIncorrectRequest() {
+            // Given
+            let weatherService = WeatherService(session: UrlSessionFake(data: weatherFakeResponseData.imageCorrectData, response: weatherFakeResponseData.responseOk, error: nil))
+            
+            //When
+            weatherService.getImage(named: "image") { result in
+                switch result {
+                case .success(let image):
+                    guard let image = image else {
+                        return
+                    }
+                    XCTAssertNil(UIImage(data: image))
+                case .failure(let error) :
+                    XCTAssertNotNil(error)
+                }
+                self.expectation.fulfill()
+            }
+            
+            //Then
+            wait(for: [expectation], timeout: 0.01)
+        }
 }

@@ -28,7 +28,7 @@ class ExchangeService {
     
     func getExchangeRates(callback: @escaping (Result <Exchange?, ServiceError>) -> Void ) {
         guard let request = createExchangeRequest() else {
-            callback(.failure(.error))
+            callback(.failure(.requestError))
             return
         }
         defaultService?.getDecodedData(request: request, callback: callback)

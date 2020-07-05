@@ -25,6 +25,7 @@ class ExchangeServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.simpleError)
             }
             self.expectation.fulfill()
         }
@@ -45,6 +46,7 @@ class ExchangeServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.responseError)
             }
             self.expectation.fulfill()
         }
@@ -65,6 +67,7 @@ class ExchangeServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.responseError)
             }
             self.expectation.fulfill()
         }
@@ -73,7 +76,7 @@ class ExchangeServiceTest: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetTranslateShouldGetFailedCallbackIfBadResponse() {
+    func testGetTranslateShouldGetFailedCallbackIfInvalidStatusCode() {
         // Given
         let exchangeService = ExchangeService(session: UrlSessionFake(data: exchangeFakeResponseData.ExchangeCorrectData, response: exchangeFakeResponseData.responseKo, error: nil), baseUrl: Constants.Network.Exchange.baseUrl)
         
@@ -85,6 +88,8 @@ class ExchangeServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                print(error.localizedDescription)
+                XCTAssertEqual(error.localizedDescription, "Status code isn't in range of 200 to 299 status code: 500")
             }
             self.expectation.fulfill()
         }
@@ -93,7 +98,7 @@ class ExchangeServiceTest: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetTranslateShouldGetFailedCallbackIfIncorrectData() {
+    func testGetTranslateShouldGetFailedCallbackIfDecodingError() {
         // Given
         let exchangeService = ExchangeService(session: UrlSessionFake(data: exchangeFakeResponseData.exchangeIncorrectData, response: exchangeFakeResponseData.responseOk, error: nil), baseUrl: Constants.Network.Exchange.baseUrl)
         
@@ -105,6 +110,7 @@ class ExchangeServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.decodingError)
             }
             self.expectation.fulfill()
         }
@@ -182,6 +188,7 @@ class ExchangeServiceTest: XCTestCase {
                 
             case .failure(let error) :
                 XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, Constants.Error.requestError)
             }
             self.expectation.fulfill()
         }

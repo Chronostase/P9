@@ -14,11 +14,13 @@ class TranslateService {
     private let session: URLSession
     private let defaultService: DefaultService?
     private let baseUrl: URL?
+    private let cloudTranslater: String?
     
-    init(session: URLSession = URLSession(configuration: .default), baseUrl: URL? = nil) {
+    init(session: URLSession = URLSession(configuration: .default), baseUrl: URL? = nil, cloudTranslater: String? = nil) {
         self.session = session
         defaultService = DefaultService(session: session)
         self.baseUrl = baseUrl
+        self.cloudTranslater = cloudTranslater
     }
     
     
@@ -28,7 +30,7 @@ class TranslateService {
     
     func getTranslation(text: String, callback: @escaping (Result <Translation?, ServiceError>) -> Void ) {
         guard let request = createTranslateRequest(with: text) else {
-            callback(.failure(.error))
+            callback(.failure(.requestError))
             return
         }
         defaultService?.getDecodedData(request: request, text: text, callback: callback)
@@ -45,8 +47,7 @@ class TranslateService {
         
         var request = URLRequest(url: url)
         request.httpMethod = translateConstants.requestType
-        
-        guard let key = ApiKeys.value(for: translateConstants.cloudTranslater) else {
+        guard let cloudTranslater = cloudTranslater,let key = ApiKeys.value(for: cloudTranslater) else {
             return nil
         }
         

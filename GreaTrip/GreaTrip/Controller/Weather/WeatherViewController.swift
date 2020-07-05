@@ -62,6 +62,7 @@ class WeatherViewController: UIViewController {
     private func getWeather() {
         showIndicator()
         WeatherService(baseUrl: Constants.Network.Weather.baseUrl).getWeather { [weak self] result in
+            self?.hideIndicator()
             switch result {
                 
             case .success(let weather) :
@@ -83,7 +84,6 @@ class WeatherViewController: UIViewController {
                 return
             }
         }
-        hideIndicator()
     }
     
     private func getImage(atIndex index: Int = 0) {
@@ -94,7 +94,7 @@ class WeatherViewController: UIViewController {
             return
         }
         showIndicator()
-        WeatherService().getImage(named: nameArray[index] ?? "") { [weak self] result in
+        WeatherService(imageURL: Constants.Network.Weather.imageUrl).getImage(named: nameArray[index] ?? "") { [weak self] result in
             self?.requests?[index] = .finished
             switch result {
                 
